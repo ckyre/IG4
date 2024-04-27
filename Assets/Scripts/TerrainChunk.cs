@@ -101,6 +101,7 @@ public class TerrainChunk : MonoBehaviour
         status = 3;
         
         meshFilter.mesh.RecalculateNormals();
+        meshFilter.mesh.RecalculateBounds();
     }
 
     public bool IsCompletlyLoaded()

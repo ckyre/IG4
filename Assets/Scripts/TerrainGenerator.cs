@@ -29,12 +29,19 @@ public class TerrainGenerator : MonoBehaviour
         visiblePositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y));
         visiblePositions.Add(new Vector2Int(currentChunkPosition.x, currentChunkPosition.y + 1));
         visiblePositions.Add(new Vector2Int(currentChunkPosition.x, currentChunkPosition.y - 1));
-
+        
+        visiblePositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y + 1));
+        visiblePositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y + 1));
+        visiblePositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y - 1));
+        visiblePositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y - 1));
+        
         List<Vector2Int> borderPositions = new List<Vector2Int>();
-        borderPositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y + 1));
-        borderPositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y + 1));
-        borderPositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y - 1));
-        borderPositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y - 1));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x, currentChunkPosition.y + 2));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y + 2));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y + 2));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x, currentChunkPosition.y - 2));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y - 2));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y - 2));
 
         // Pre-load surronding chunks.
 
