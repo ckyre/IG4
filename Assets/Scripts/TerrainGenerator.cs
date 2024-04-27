@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
@@ -9,23 +10,81 @@ public class TerrainGenerator : MonoBehaviour
 
     [Space] [SerializeField] private Transform viewer;
 
-    private Dictionary<Vector2Int, TerrainChunk> visibleChunks = new Dictionary<Vector2Int, TerrainChunk>();
+    private Dictionary<Vector2Int, TerrainChunk> chunksPool = new Dictionary<Vector2Int, TerrainChunk>();
     
-    void Start()
-    {
-    }
-
     private void Update()
     {
-        List<Vector2Int> visibleChunksPositions = GetVisibleChunks(viewer.position);
-        foreach (Vector2Int visibleChunkPosition in visibleChunksPositions)
+        // Chunks visibility.
+        
+        Vector2Int currentChunkPosition = WorldSpaceToChunkSpace(viewer.position);
+
+        if (chunksPool.ContainsKey(currentChunkPosition) == true)
         {
-            if (visibleChunks.ContainsKey(visibleChunkPosition) == false)
+            // chunksPool[currentChunkPosition].UpdateHeight(noiseProfile);
+        }
+        
+        List<Vector2Int> visiblePositions = new List<Vector2Int>();
+        visiblePositions.Add(currentChunkPosition);
+        visiblePositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y));
+        visiblePositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y));
+        visiblePositions.Add(new Vector2Int(currentChunkPosition.x, currentChunkPosition.y + 1));
+        visiblePositions.Add(new Vector2Int(currentChunkPosition.x, currentChunkPosition.y - 1));
+
+        List<Vector2Int> borderPositions = new List<Vector2Int>();
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y + 1));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y + 1));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x + 1, currentChunkPosition.y - 1));
+        borderPositions.Add(new Vector2Int(currentChunkPosition.x - 1, currentChunkPosition.y - 1));
+
+        // Pre-load surronding chunks.
+
+        foreach (Vector2Int borderPosition in borderPositions)
+        {
+            if (chunksPool.ContainsKey(borderPosition) == false)
             {
-                TerrainChunk chunk = CreateChunk(visibleChunkPosition);
-                visibleChunks.Add(visibleChunkPosition, chunk);
+                // Just load a flat plane.
+                TerrainChunk chunk = CreateChunk(borderPosition);
+                chunksPool.Add(borderPosition, chunk);
             }
         }
+        
+        // Load visible chunks.
+
+        foreach (Vector2Int visiblePosition in visiblePositions)
+        {
+            if (chunksPool.ContainsKey(visiblePosition) == true)
+            {
+                // Fully load chunk.
+                TerrainChunk chunk = chunksPool[visiblePosition];
+
+                if (chunk.IsCompletlyLoaded() == false)
+                {
+                    chunk.UpdateHeight(noiseProfile);
+                    chunk.CalculateNormals();
+                }
+            }
+            else
+            {
+                // If, for any reasons, the chunk was not pre-loaded, load it fully.
+                TerrainChunk chunk = CreateChunk(visiblePosition);
+                chunksPool.Add(visiblePosition, chunk);
+                chunk.UpdateHeight(noiseProfile);
+                chunk.CalculateNormals();
+            }
+        }
+        
+        // Delete all chunks that are away from view.
+        
+        List<KeyValuePair<Vector2Int, TerrainChunk>> chunksToDelete = chunksPool.Where(kv => 
+            (visiblePositions.Contains(kv.Key) == false && borderPositions.Contains(kv.Key) == false)
+        ).ToList();
+        
+        foreach (KeyValuePair<Vector2Int, TerrainChunk> kv in chunksToDelete)
+        {
+            Destroy(kv.Value.gameObject);
+            chunksPool.Remove(kv.Key);
+        }
+        
     }
 
     private TerrainChunk CreateChunk(Vector2Int chunkPosition)
@@ -34,37 +93,24 @@ public class TerrainGenerator : MonoBehaviour
         chunkGameObject.transform.parent = transform;
         
         TerrainChunk chunk = chunkGameObject.AddComponent<TerrainChunk>();
-        Vector3 worldPosition = ChunkSpaceToWorldSpace(chunkPosition);
-        chunk.Create(worldPosition, chunkSize, terrainMaterial);
-        
+        Vector3 chunkWorldPosition = ChunkSpaceToWorldSpace(chunkPosition);
+        chunk.Create(chunkWorldPosition, chunkSize, terrainMaterial);
         chunk.GenerateFlatMesh();
 
         return chunk;
     }
 
-    private List<Vector2Int> GetVisibleChunks(Vector3 viewerWorldPosition)
-    {
-        List<Vector2Int> visibleChunks = new List<Vector2Int>();
-
-        Vector2Int viewerChunkPosition = WorldSpaceToChunkSpace(viewerWorldPosition);
-        visibleChunks.Add(viewerChunkPosition);
-        
-        // TODO: Add left, right, top, bottom chunks.
-
-        return visibleChunks;
-    }
-
     private Vector2Int WorldSpaceToChunkSpace(Vector3 worldPosition)
     {
-        int x = Mathf.FloorToInt(worldPosition.x / (chunkSize.x / 2.0f));
-        int z = Mathf.FloorToInt(worldPosition.z / (chunkSize.y / 2.0f));
+        int x = Mathf.FloorToInt(worldPosition.x/ chunkSize.x);
+        int z = Mathf.FloorToInt(worldPosition.z / chunkSize.y);
         return new Vector2Int(x, z);
     }
 
     private Vector3 ChunkSpaceToWorldSpace(Vector2Int chunkPosition)
     {
-        float x = (chunkPosition.x * chunkSize.x) - (chunkSize.x / 2.0f);
-        float z = (chunkPosition.y * chunkSize.y) - (chunkSize.y / 2.0f);
+        float x = (chunkPosition.x * chunkSize.x);
+        float z = (chunkPosition.y * chunkSize.y);
         return new Vector3(x, 0.0f, z);
     }
 }
