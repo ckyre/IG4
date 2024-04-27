@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcce89dd15f160045addf6464fc9c0ed, type: 3}
   m_Name: DefaultNoiseProfile
   m_EditorClassIdentifier: 
-  octaves: 3
-  amplitude: 1
-  frequency: 1
-  scale: 0.3
-  persistance: 0.7
-  lacunarity: 0.8
+  octaves: 2
+  amplitude: 8.03
+  frequency: 0.12
+  scale: 3.09
+  persistance: 0.38
+  lacunarity: 2.85
