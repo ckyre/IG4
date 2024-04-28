@@ -5,8 +5,9 @@ using UnityEngine;
 public class TerrainGenerator : MonoBehaviour
 {
     [SerializeField] private Vector2Int chunkSize = new Vector2Int(20, 20);
-    [SerializeField] private Material terrainMaterial;
     [SerializeField] private NoiseProfile noiseProfile;
+    [SerializeField] private Material terrainMaterial;
+    [SerializeField] private Material waterMaterial;
 
     [Space] [SerializeField] private Transform viewer;
 
@@ -67,7 +68,8 @@ public class TerrainGenerator : MonoBehaviour
                 if (chunk.IsCompletlyLoaded() == false)
                 {
                     chunk.UpdateHeight(noiseProfile);
-                    chunk.CalculateNormals();
+                    chunk.GenerateWater(-2.0f, waterMaterial);
+                    chunk.CalculateNormalsAndBounds();
                 }
             }
             else
@@ -76,7 +78,8 @@ public class TerrainGenerator : MonoBehaviour
                 TerrainChunk chunk = CreateChunk(visiblePosition);
                 chunksPool.Add(visiblePosition, chunk);
                 chunk.UpdateHeight(noiseProfile);
-                chunk.CalculateNormals();
+                chunk.GenerateWater(-2.0f, waterMaterial);
+                chunk.CalculateNormalsAndBounds();
             }
         }
         

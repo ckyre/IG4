@@ -11,6 +11,8 @@ public class TerrainChunk : MonoBehaviour
     private List<Vector3> vertices;
     private List<Vector2> uvs;
     private List<int> triangles;
+
+    private MeshFilter waterMeshFilter;
     
     public void Create(Vector3 chunkWorldPosition, Vector2Int chunkSize, Material material)
     {
@@ -80,8 +82,6 @@ public class TerrainChunk : MonoBehaviour
     public void UpdateHeight(NoiseProfile noise)
     {
         status = 2;
-
-        // meshFilter.mesh.GetVertices(vertices);
         
         for (int x = 0; x <= size.x; x++)
         {
@@ -96,17 +96,47 @@ public class TerrainChunk : MonoBehaviour
         meshFilter.mesh.SetVertices(vertices);
     }
 
-    public void CalculateNormals()
+    public void GenerateWater(float waterHeight, Material waterMaterial)
     {
         status = 3;
         
+        GameObject waterGameObject = new GameObject("Water");
+        waterGameObject.transform.parent = transform;
+        waterGameObject.transform.localPosition = new Vector3(0, waterHeight, 0);
+        
+        waterMeshFilter = waterGameObject.AddComponent<MeshFilter>();
+        waterMeshFilter.mesh = new Mesh();
+        waterMeshFilter.mesh.vertices = new Vector3[]
+        {
+            new Vector3(0.0f, 0.0f, 0.0f),
+            new Vector3(size.x, 0.0f, 0.0f),
+            new Vector3(size.x, 0.0f, size.y),
+            new Vector3(0.0f, 0.0f, size.y)
+        };
+        waterMeshFilter.mesh.triangles = new int[]
+        {
+            0, 3, 2,
+            2, 1, 0
+        };
+        
+        MeshRenderer waterMeshRenderer = waterGameObject.AddComponent<MeshRenderer>();
+        waterMeshRenderer.material = waterMaterial;
+    }
+
+    public void CalculateNormalsAndBounds()
+    {
+        status = 4;
+        
         meshFilter.mesh.RecalculateNormals();
         meshFilter.mesh.RecalculateBounds();
+        
+        waterMeshFilter.mesh.RecalculateNormals();
+        waterMeshFilter.mesh.RecalculateBounds();
     }
 
     public bool IsCompletlyLoaded()
     {
-        return status == 3;
+        return status == 4;
     }
     
     private int Space2DTo1D(int x, int z)
