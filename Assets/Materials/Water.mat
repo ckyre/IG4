@@ -24,6 +24,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainNormal:
+        m_Texture: {fileID: 2800000, guid: f0423a8874fad5f43b3ceee0d1ebe42b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondaryNormal:
+        m_Texture: {fileID: 2800000, guid: 70ff6471adac9eb42b665fd1bcc6169c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -38,9 +46,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Depth: 0.1
+    - _Displacement: 0.0001
+    - _Normal_Strength: 0.46
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _Smoothness: 1
+    - _Strength: 0.59
+    m_Colors:
+    - _Deep_Water_Color: {r: 0.13725491, g: 0.43137258, b: 0.50980395, a: 0.9607843}
+    - _Shallow_Water_Color: {r: 0.5803922, g: 0.80392164, b: 0.8470589, a: 0.88235295}
   m_BuildTextureStacks: []
 --- !u!114 &117268999112736016
 MonoBehaviour:
