@@ -18,7 +18,9 @@ public class PlaneAnimation : MonoBehaviour {
     [Header ("Rudder (Yaw)")]
     public Transform rudder;
     public float rudderMax = 20;
-
+    
+    [Space] [SerializeField] private PlaneExplodeAnimation planeExplodeAnimation;
+    
     // Smoothing vars
     float smoothedRoll;
     float smoothRollV;
@@ -28,9 +30,11 @@ public class PlaneAnimation : MonoBehaviour {
     float smoothYawV;
 
     MFlight.Demo.Plane plane;
+    private Rigidbody rb;
 
     void Start () {
         plane = GetComponent<MFlight.Demo.Plane> ();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update () {
@@ -52,5 +56,21 @@ public class PlaneAnimation : MonoBehaviour {
         float targetYaw = plane.Yaw;
         smoothedYaw = Mathf.SmoothDamp (smoothedYaw, targetYaw, ref smoothYawV, Time.deltaTime * smoothTime);
         rudder.localEulerAngles = new Vector3 (rudder.localEulerAngles.x, -smoothedYaw * rudderMax, rudder.localEulerAngles.z);
+    }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        float velocity = rb.velocity.magnitude;
+        if (velocity > 5.0f)
+        {
+            planeExplodeAnimation.transform.position = transform.position;
+            planeExplodeAnimation.transform.rotation = transform.rotation;
+            planeExplodeAnimation.Trigger(other.GetContact(0).point);
+
+            rb.isKinematic = true;
+            rb.gameObject.SetActive(false);
+            
+            GameManager.instance.PlayerCrash();
+        }
     }
 }
