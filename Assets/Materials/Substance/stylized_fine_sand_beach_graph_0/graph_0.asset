@@ -207,8 +207,8 @@ MonoBehaviour:
     >\n  <presetinput identifier=\"$outputsize\" uid=\"3260482754\" type=\"8\" value=\"10,10\"
     />\n  <presetinput identifier=\"sand_volume\" uid=\"2879262755\" type=\"0\" value=\"0.951\"
     />\n  <presetinput identifier=\"waves_height\" uid=\"2879544472\" type=\"0\"
-    value=\"0.557\" />\n  <presetinput identifier=\"wave_direction\" uid=\"2879683935\"
-    type=\"0\" value=\"0.32\" />\n  <presetinput identifier=\"Waves_Distortion\"
+    value=\"0.073\" />\n  <presetinput identifier=\"wave_direction\" uid=\"2879683935\"
+    type=\"0\" value=\"0.25\" />\n  <presetinput identifier=\"Waves_Distortion\"
     uid=\"2879607270\" type=\"4\" value=\"5\" />\n  <presetinput identifier=\"waves_sharpen\"
     uid=\"2879355190\" type=\"0\" value=\"0.25\" />\n  <presetinput identifier=\"wind_orientation\"
     uid=\"2879337066\" type=\"0\" value=\"0.8\" />\n  <presetinput identifier=\"sand_variations\"
@@ -223,8 +223,8 @@ MonoBehaviour:
     >\n  <presetinput identifier=\"$outputsize\" uid=\"3260482754\" type=\"8\" value=\"10,10\"
     />\n </sbspreset>\n"
   MaterialShader: Universal Render Pipeline/Lit
-  RenderTextures: 1
-  OutputRemaped: 1
+  RenderTextures: 0
+  OutputRemaped: 0
   Presets:
   - Info:
       Label: Smooth Sand
@@ -362,7 +362,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.557
+        Data: 0.073
         NumericalDescription:
           DefaultValue: 0.17
           MinValue: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 2
-        Data: 0.32
+        Data: 0.25
         NumericalDescription:
           DefaultValue: 0.402667
           MinValue: 0
