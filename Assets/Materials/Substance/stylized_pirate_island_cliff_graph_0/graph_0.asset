@@ -200,7 +200,15 @@ MonoBehaviour:
   EnablePhysicalSize: 0
   Thumbnail: 
   HasThumbnail: 0
-  CurrentStatePreset: 
+  CurrentStatePreset: " <sbspreset pkgurl=\"pkg://stylized_pirate_island_cliff\"
+    label=\"\" >\n  <presetinput identifier=\"$outputsize\" uid=\"1121684949\" type=\"8\"
+    value=\"11,11\" />\n  <presetinput identifier=\"rock_color\" uid=\"714533406\"
+    type=\"2\" value=\"0.792453,0.628884,0.265397\" />\n  <presetinput identifier=\"moss_amount\"
+    uid=\"712895311\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"moss_color\"
+    uid=\"714533436\" type=\"2\" value=\"0.278431,0.384314,0.0941177\" />\n  <presetinput
+    identifier=\"moss_roughness\" uid=\"714895547\" type=\"0\" value=\"0.609\" />\n 
+    <presetinput identifier=\"sea_level_roughness\" uid=\"714891257\" type=\"0\"
+    value=\"0.177\" />\n </sbspreset>\n"
   IsRuntimeOnly: 0
   GenerateAllOutputs: 0
   GenerateAllMipmaps: 1
@@ -247,7 +255,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 5
           WidgetType: 0
-        Data: {x: 10, y: 10}
+        Data: {x: 11, y: 11}
         NumericalDescription:
           DefaultValue: {x: 8, y: 8}
           MinValue: {x: 0, y: 0}
@@ -288,7 +296,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 0.55, y: 0.514412, z: 0.433529}
+        Data: {x: 0.7924528, y: 0.6288838, z: 0.26539695}
         NumericalDescription:
           DefaultValue: {x: 0.55, y: 0.514412, z: 0.433529}
           MinValue: {x: 0, y: 0, z: 0}
@@ -328,7 +336,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.5
+        Data: 0
         NumericalDescription:
           DefaultValue: 0.5
           MinValue: 0
@@ -348,7 +356,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 0.45098, y: 0.462745, z: 0.0705882}
+        Data: {x: 0.2784314, y: 0.38431376, z: 0.09411766}
         NumericalDescription:
           DefaultValue: {x: 0.45098, y: 0.462745, z: 0.0705882}
           MinValue: {x: 0, y: 0, z: 0}
@@ -368,7 +376,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.5
+        Data: 0.609
         NumericalDescription:
           DefaultValue: 0.5
           MinValue: 0
@@ -428,7 +436,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.54
+        Data: 0.177
         NumericalDescription:
           DefaultValue: 0.54
           MinValue: 0

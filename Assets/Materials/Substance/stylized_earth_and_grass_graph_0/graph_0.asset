@@ -202,9 +202,13 @@ MonoBehaviour:
   HasThumbnail: 1
   CurrentStatePreset: " <sbspreset pkgurl=\"pkg://stylized_earth_and_grass\" label=\"\"
     >\n  <presetinput identifier=\"$outputsize\" uid=\"3368699925\" type=\"8\" value=\"11,11\"
-    />\n  <presetinput identifier=\"grass_patch_density\" uid=\"2716041678\" type=\"0\"
-    value=\"0.445\" />\n  <presetinput identifier=\"grass_color\" uid=\"2716053063\"
-    type=\"2\" value=\"0.344424,0.443396,0.332547\" />\n </sbspreset>\n"
+    />\n  <presetinput identifier=\"mounds_shape_variation\" uid=\"2716056516\" type=\"0\"
+    value=\"0.174\" />\n  <presetinput identifier=\"grass_patch_density\" uid=\"2716041678\"
+    type=\"0\" value=\"0.88\" />\n  <presetinput identifier=\"grass_color\" uid=\"2716053063\"
+    type=\"2\" value=\"0.2,0.356863,0.180392\" />\n  <presetinput identifier=\"grass_roughness\"
+    uid=\"2716046851\" type=\"0\" value=\"0.997\" />\n  <presetinput identifier=\"grass_patch_fullness\"
+    uid=\"2716043657\" type=\"0\" value=\"0.033\" />\n  <presetinput identifier=\"grass_orientation_random\"
+    uid=\"2716039472\" type=\"0\" value=\"0.598\" />\n </sbspreset>\n"
   IsRuntimeOnly: 0
   GenerateAllOutputs: 0
   GenerateAllMipmaps: 1
@@ -332,7 +336,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.47
+        Data: 0.174
         NumericalDescription:
           DefaultValue: 0.47
           MinValue: 0
@@ -352,7 +356,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.445
+        Data: 0.88
         NumericalDescription:
           DefaultValue: 0.36
           MinValue: 0
@@ -372,7 +376,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 0.34442383, y: 0.4433962, z: 0.33254716}
+        Data: {x: 0.2, y: 0.35686275, z: 0.18039216}
         NumericalDescription:
           DefaultValue: {x: 0.231846, y: 0.329412, z: 0.219608}
           MinValue: {x: 0, y: 0, z: 0}
@@ -392,7 +396,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 1
+        Data: 0.997
         NumericalDescription:
           DefaultValue: 1
           MinValue: 0
@@ -412,7 +416,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.25
+        Data: 0.033
         NumericalDescription:
           DefaultValue: 0.25
           MinValue: 0
@@ -432,7 +436,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.05
+        Data: 0.598
         NumericalDescription:
           DefaultValue: 0.05
           MinValue: 0
