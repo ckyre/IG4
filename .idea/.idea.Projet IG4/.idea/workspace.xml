@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75747ef2-6508-4c8c-aa1c-e0c009513370" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Water.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Water.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GabDev.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GabDev.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/PlaneAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/PlaneAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/Clouds.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/Clouds.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/Clouds.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/Clouds.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/CloudsRenderFeature.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/CloudsRenderFeature.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/Noise_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/Noise_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/Noise_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/Noise_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/VolumetricClouds.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/VolumetricClouds.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/New Universal Render Pipeline Asset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/New Universal Render Pipeline Asset.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/New Universal Render Pipeline Asset_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/New Universal Render Pipeline Asset_Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,25 +38,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Gabriel\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Gabriel\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Gabriel\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Gabriel\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Gabriel\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Gabriel\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Unity.exe" />
@@ -105,6 +108,9 @@
       <workItem from="1714476421479" duration="5192000" />
       <workItem from="1714487521400" duration="2440000" />
       <workItem from="1714490833602" duration="19718000" />
+      <workItem from="1714516007062" duration="1137000" />
+      <workItem from="1714556952545" duration="5956000" />
+      <workItem from="1714563670925" duration="5061000" />
     </task>
     <servers />
   </component>

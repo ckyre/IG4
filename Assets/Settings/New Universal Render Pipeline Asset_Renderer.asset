@@ -10,21 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41e369b02440bbd4ca0f819c64c91cbb, type: 3}
-  m_Name: CloudsRenderFeature
+  m_Name: Volumetric Clouds
   m_EditorClassIdentifier: 
   m_Active: 1
   material: {fileID: 2100000, guid: 1e1d018771626084f9e603b26bc8ebd7, type: 2}
-  cloudShapeTexture: {fileID: 2800000, guid: 92811288f41b27f47aebf2437197cabc, type: 3}
-  cloudColor: {r: 1, g: 1, b: 1, a: 0}
-  steps: 25
-  cloudScale: 8.6
-  cloudSmooth: 10
-  containerBoundsMin: {x: -100, y: 50, z: -100}
-  containerBoundsMax: {x: 100, y: 80, z: 100}
-  containerEdgeFadeDst: 45
-  wind: {x: 0.5, y: 0, z: 0}
-  densityThreshold: 0.31
-  densityMultiplier: 0.63
+  passEvent: 500
+  settings: {fileID: 11400000, guid: 919ce0a000775b44fa7676a08852e6e8, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

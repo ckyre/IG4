@@ -7,118 +7,88 @@ public class CloudsRenderFeature : ScriptableRendererFeature
     class CloudsRenderPass : ScriptableRenderPass
     {
         private Material material;
-        private RTHandle renderTexture;
-        private CloudsSettings settings;
+        private CloudsSettings materialSettings;
 
-        public CloudsRenderPass(Material mat)
+        private string profilerTag;
+        
+        private RenderTargetIdentifier source;
+        private RenderTargetHandle tempTexture;
+        
+        public CloudsRenderPass(Material material, CloudsSettings settings, RenderPassEvent passEvent)
         {
-            material = mat;
-            renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
-        }
+            this.material = material;
+            this.materialSettings = settings;
 
-        public void Setup(RTHandle h, CloudsSettings s)
-        {
-            renderTexture = h;
-            settings = s;
+            this.renderPassEvent = passEvent;
+            
+            this.profilerTag = "Volumetric Clouds";
         }
         
+        public void Setup(RenderTargetIdentifier source)
+        {
+            this.source = source;
+        }
+
+        public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
+        {
+            cmd.GetTemporaryRT(tempTexture.id, cameraTextureDescriptor);
+            ConfigureTarget(tempTexture.Identifier());
+            ConfigureClear(ClearFlag.All, Color.black);
+        }
+
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            CommandBuffer cmd = CommandBufferPool.Get(name: "CloudsRenderPass");
+            CommandBuffer cmd = CommandBufferPool.Get(profilerTag);
+            cmd.Clear();
+
+            if(material == null) return;
+
+            try
+            {
+                materialSettings.BindMaterial(material);
+
+                /* settings.material.SetFloat("_detailNoiseScale", Mathf.Abs(detailCloudSettings.DetailCloudScale));
+                settings.material.SetVector("_detailNoiseWind", detailCloudSettings.DetailCloudWind);
+                settings.material.SetTexture("_DetailNoise", detailCloudSettings.DetailCloudNoiseTexure);
+                settings.material.SetFloat("_detailNoiseWeight", detailCloudSettings.detailCloudWeight);
+                settings.material.SetTexture("_BlueNoise", blueNoiseSettings.BlueNoiseTexure);
+                settings.material.SetFloat("_rayOffsetStrength", blueNoiseSettings.RayOffsetStrength); */
+
+                cmd.Blit(source, tempTexture.Identifier());
+                cmd.Blit(tempTexture.Identifier(), source, material, 0);
+
+                context.ExecuteCommandBuffer(cmd);
+            }
+            catch
+            {
+                Debug.LogError("Error while executing clouds render pass!");
+            }
             
-            material.SetTexture("_ShapeNoise", settings.cloudShapeTexture);
-            material.SetColor("_CloudColor", settings.cloudColor);
-            
-            material.SetFloat("_NumSteps", settings.steps);
-            material.SetFloat("_CloudScale", settings.cloudScale);
-            material.SetFloat("_CloudSmooth", settings.cloudSmooth);
-            
-            material.SetVector("_ContainerBoundsMin", settings.containerBoundsMin);
-            material.SetVector("_ContainerBoundsMax", settings.containerBoundsMax);
-            material.SetFloat("_ContainerEdgeFadeDst", settings.containerEdgeFadeDst);
-            
-            material.SetVector("_Wind", settings.wind);
-            material.SetFloat("_DensityThreshold", settings.densityThreshold);
-            material.SetFloat("_DensityMultiplier", settings.densityMultiplier);
-            
-            Blitter.BlitCameraTexture(cmd, renderTexture, renderTexture, material, 0);
-            
-            context.ExecuteCommandBuffer(cmd);
+            cmd.Clear();
             CommandBufferPool.Release(cmd);
         }
     }
-
-    public class CloudsSettings
-    {
-        public Texture2D cloudShapeTexture;
-        public Color cloudColor;
-        public int steps = 10;
-        public float cloudScale = 1.0f;
-        public float cloudSmooth = 5.0f;
-
-        public Vector3 containerBoundsMin;
-        public Vector3 containerBoundsMax;
-        public float containerEdgeFadeDst = 45.0f;
     
-        public Vector3 wind = new Vector3(1, 0, 0);
-        public float densityThreshold = 0.25f;
-        public float densityMultiplier = 1;
-
-    }
-
     public Material material;
-    
-    public Texture2D cloudShapeTexture;
-    public Color cloudColor;
-    public int steps = 10;
-    public float cloudScale = 1.0f;
-    public float cloudSmooth = 5.0f;
+    public RenderPassEvent passEvent = RenderPassEvent.AfterRenderingSkybox;
+    public CloudsSettings settings;
 
-    public Vector3 containerBoundsMin;
-    public Vector3 containerBoundsMax;
-    public float containerEdgeFadeDst = 45.0f;
-    
-    public Vector3 wind = new Vector3(1, 0, 0);
-    public float densityThreshold = 0.25f;
-    public float densityMultiplier = 1;
-    
     private CloudsRenderPass pass;
+    private RenderTargetHandle renderTextureHandle;
     
     public override void Create()
     {
-        // material = CoreUtils.CreateEngineMaterial(shader);
-        pass = new CloudsRenderPass(material);
+        pass = new CloudsRenderPass(material, settings, passEvent);
     }
     
     public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData)
     {
-        CloudsSettings settings = new CloudsSettings();
-        settings.cloudShapeTexture = cloudShapeTexture;
-        settings.cloudColor = cloudColor;
-        settings.steps = steps;
-        settings.cloudScale = cloudScale;
-        settings.cloudSmooth = cloudSmooth;
-        settings.containerBoundsMin = containerBoundsMin;
-        settings.containerBoundsMax = containerBoundsMax;
-        settings.containerEdgeFadeDst = containerEdgeFadeDst;
-        settings.wind = wind;
-        settings.densityThreshold = densityThreshold;
-        settings.densityMultiplier = densityMultiplier;
-            
-        pass.ConfigureInput(ScriptableRenderPassInput.Color);
-        pass.Setup(renderer.cameraColorTargetHandle, settings);
+        var cameraColorTargetIdent = renderer.cameraColorTarget;
+        pass.Setup(cameraColorTargetIdent);
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        if (material != null)
-        {
-            renderer.EnqueuePass(pass);
-        }
-    }
-    
-    protected override void Dispose(bool disposing)
-    {
-        // CoreUtils.Destroy(material);
+        renderer.EnqueuePass(pass);
     }
 }
