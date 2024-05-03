@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.64948714, g: 0.77311146, b: 0.834781, a: 1}
+  m_IndirectSpecularColor: {r: 0.6494871, g: 0.7731115, b: 0.834781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7922,6 +7922,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 85777868283286938, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: field of view
+      value: 60.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 85777868283286938, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_FocalLength
+      value: 20.78461
+      objectReference: {fileID: 0}
+    - target: {fileID: 85777868283286938, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: far clip plane
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 85777868283286938, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 85777868283286938, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: timerDuration
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757741349826463538, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757741349826463538, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_RendererIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757741349826463538, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3899798055890264284, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: m_LocalPosition.y
