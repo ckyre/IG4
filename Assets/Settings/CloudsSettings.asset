@@ -16,7 +16,7 @@ MonoBehaviour:
   LightSteps: 15
   RenderDistance: 10000
   CloudsColor: {r: 1, g: 1, b: 1, a: 1}
-  CloudsAlpha: 0.98
+  CloudsAlpha: 2.13
   CloudsNoiseTexure: {fileID: 2800000, guid: c41f5800af2216d4aaef84a1f41747bf, type: 3}
   CloudsScale: 1.94
   CloudsSmooth: 58.6
@@ -26,6 +26,6 @@ MonoBehaviour:
   LightAbsorptionThroughCloud: 0.41
   LightAbsorptionTowardSun: 0.36
   DarknessThreshold: 0.25
-  ContainerBoundsMin: {x: -301.2, y: 400, z: 345.9}
-  ContainerBoundsMax: {x: 257.3, y: 480, z: 849.1}
+  ContainerBoundsMin: {x: -247.3, y: 420, z: 341.4}
+  ContainerBoundsMax: {x: 217.3, y: 500, z: 819.2}
   ContainerEdgeFadeDst: 123.9

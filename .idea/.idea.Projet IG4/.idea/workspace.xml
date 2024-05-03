@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="75747ef2-6508-4c8c-aa1c-e0c009513370" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GabDev.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GabDev.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GabDev.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GabDev/GabDevTerrain.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GabDev/GabDevTerrain.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/CloudsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VolumetricClouds/CloudsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Batiments/moai/Default OBJ_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Batiments/moai/Default OBJ_Normal.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/FlightHUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/FlightHUD.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +108,7 @@
       <workItem from="1714630541738" duration="6369000" />
       <workItem from="1714664225309" duration="1373000" />
       <workItem from="1714671083107" duration="4932000" />
+      <workItem from="1714743149048" duration="212000" />
     </task>
     <servers />
   </component>

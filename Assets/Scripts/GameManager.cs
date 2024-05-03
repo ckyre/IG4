@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             collectablesCount = FindObjectsOfType<Collectable>().Length;
             FlightHUD.instance.UpdateCollectables(collectables, collectablesCount);
             
-            mapSettings = MapSettings.Night;
+            mapSettings = MapSettings.Day;
             FindObjectOfType<DayTimeManager>().ApplySettings(mapSettings);
         }
     }
