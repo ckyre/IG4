@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e369b02440bbd4ca0f819c64c91cbb, type: 3}
   m_Name: Volumetric Clouds
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   material: {fileID: 2100000, guid: 1e1d018771626084f9e603b26bc8ebd7, type: 2}
   passEvent: 500
   settings: {fileID: 11400000, guid: 919ce0a000775b44fa7676a08852e6e8, type: 2}
