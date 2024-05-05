@@ -7,6 +7,51 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Canon
+    second: {fileID: 2100000, guid: ee4bd70e266471a42aa0596abf2f6855, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Coque
+    second: {fileID: 2100000, guid: fd81e5cad2664134cb95b81e88d831ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Deck
+    second: {fileID: 2100000, guid: f6a0f36b09c4e6344926d8aa7dc57cbf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor1
+    second: {fileID: 2100000, guid: 7022b041b622d144ab9a0f816fb79282, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor2
+    second: {fileID: 2100000, guid: c03b650a7bfcf8e4f871c05bd927c103, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor3
+    second: {fileID: 2100000, guid: ecf8f1a8319c26742a964208bd574357, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor4
+    second: {fileID: 2100000, guid: d59fe9f849f6a624498da158713addbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SousCoque
+    second: {fileID: 2100000, guid: 8807e19c9ddcac74d8c78872179b1ab2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: 74d5aedd5f798e443867ec590e397ffd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: speedshape_ship
     second: {fileID: 2100000, guid: d8de5ad0e0cb86143b6bf5af19277598, type: 2}
   materials:
