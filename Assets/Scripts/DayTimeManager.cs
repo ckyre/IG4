@@ -1,39 +1,51 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DayTimeManager : MonoBehaviour
 {
-    [SerializeField] private float daySunAngle = 50.0f, duskSunAngle = 170.0f, nightSunAngle = 270.0f;
-    [Space]
-    [SerializeField] private Transform sunTransform;
+    [Serializable]
+    public class MapSettings
+    {
+        public Color sunColor = Color.white;
+        public float sunAngle = 50.0f;
+        [Range(0.0f, 1.0f)]
+        public float sunIntensity = 1.0f;
+        public Material waterMaterial;
+        public bool activatePlaneLights = false;
+    }
 
+    [SerializeField] private Light sun;
     [SerializeField] private List<Light> planeNightLights = new List<Light>();
+    [SerializeField] private MeshRenderer water;
+
+    [SerializeField] private MapSettings daySettings, duskSettings, nightSettings;
     
     public void ApplySettings(GameManager.MapSettings settings)
     {
-        if (settings == GameManager.MapSettings.Day)
+        MapSettings mapSettings = daySettings;
+        if (settings == GameManager.MapSettings.Dusk)
         {
-            sunTransform.eulerAngles = new Vector3(daySunAngle, sunTransform.eulerAngles.y, sunTransform.eulerAngles.z);
-            foreach (Light l in planeNightLights)
-            {
-                l.gameObject.SetActive(false);
-            }
-        }
-        else if (settings == GameManager.MapSettings.Dusk)
-        {
-            sunTransform.eulerAngles = new Vector3(duskSunAngle, sunTransform.eulerAngles.y, sunTransform.eulerAngles.z);
-            foreach (Light l in planeNightLights)
-            {
-                l.gameObject.SetActive(true);
-            }
+            mapSettings = duskSettings;
         }
         else if (settings == GameManager.MapSettings.Night)
         {
-            sunTransform.eulerAngles = new Vector3(nightSunAngle, sunTransform.eulerAngles.y, sunTransform.eulerAngles.z);
-            foreach (Light l in planeNightLights)
-            {
-                l.gameObject.SetActive(true);
-            }
+            mapSettings = nightSettings;
         }
+
+        ApplySunSettings(mapSettings);
+        water.material = mapSettings.waterMaterial;
+
+        foreach (Light l in planeNightLights)
+        {
+            l.gameObject.SetActive(mapSettings.activatePlaneLights);
+        }
+    }
+
+    private void ApplySunSettings(MapSettings settings)
+    {
+        sun.transform.eulerAngles = new Vector3(settings.sunAngle, sun.transform.eulerAngles.y, sun.transform.eulerAngles.z);
+        sun.intensity = settings.sunIntensity;
+        sun.color = settings.sunColor;
     }
 }

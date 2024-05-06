@@ -7,14 +7,17 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
+  m_Name: Water_DAY
   m_Shader: {fileID: -6465566751694194690, guid: f2bc30dc9f9e43944bebda74d8359410,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _PRESET_DAY
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - PRESET_DAY
+  - PRESET_DUSK
+  - _Preset_DUSK
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
