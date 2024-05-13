@@ -124,10 +124,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.91
-  m_Height: 21.42
+  m_Radius: 1.64
+  m_Height: 15.35
   m_Direction: 1
-  m_Center: {x: 0.95, y: 9.3, z: -1.11}
+  m_Center: {x: 0.92, y: 6.08, z: -0.43}
 --- !u!23 &9106026091390414722 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 0c135f9544ae3344fb3a3fe1d8c5807a,
