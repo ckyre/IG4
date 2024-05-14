@@ -43,10 +43,14 @@ namespace MFlight.Demo
         private bool rollOverride = false;
         private bool pitchOverride = false;
 
+        private bool stop = false;
+        private float defaultThrust = 100.0f;
+        
         private void Awake()
         {
             rigid = GetComponent<Rigidbody>();
-
+            defaultThrust = thrust;
+            
             if (controller == null)
                 Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
         }
@@ -69,6 +73,16 @@ namespace MFlight.Demo
             {
                 pitchOverride = true;
                 rollOverride = true;
+            }
+
+            if (Input.GetKey(KeyCode.Space) == true)
+            {
+                stop = true;
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space) == true)
+            {
+                stop = false;
             }
 
             // Calculate the autopilot stick inputs.
@@ -133,7 +147,16 @@ namespace MFlight.Demo
         {
             // Ultra simple flight where the plane just gets pushed forward and manipulated
             // with torques to turn.
-            rigid.AddRelativeForce(Vector3.forward * thrust * forceMult, ForceMode.Force);
+
+            if (stop == true)
+            {
+                rigid.AddForce(-Vector3.up * thrust * forceMult, ForceMode.Force);
+            }
+            else
+            {
+                rigid.AddRelativeForce(Vector3.forward * thrust * forceMult, ForceMode.Force);
+            }
+            
             rigid.AddRelativeTorque(new Vector3(turnTorque.x * pitch,
                                                 turnTorque.y * yaw,
                                                 -turnTorque.z * roll) * forceMult,

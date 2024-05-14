@@ -7071,7 +7071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 1
   timerDuration: 300
-  mapSettings: 0
+  mapSettings: 1
   collectables: 0
 --- !u!4 &1738974201
 Transform:

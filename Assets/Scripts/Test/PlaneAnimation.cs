@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -57,15 +58,20 @@ public class PlaneAnimation : MonoBehaviour {
         smoothedYaw = Mathf.SmoothDamp (smoothedYaw, targetYaw, ref smoothYawV, Time.deltaTime * smoothTime);
         rudder.localEulerAngles = new Vector3 (rudder.localEulerAngles.x, -smoothedYaw * rudderMax, rudder.localEulerAngles.z);
     }
-    
-    private void OnCollisionEnter(Collision other)
+
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Collectable") == true)
+            return;
+        
         float velocity = rb.velocity.magnitude;
         if (velocity > 5.0f)
         {
             planeExplodeAnimation.transform.position = transform.position;
             planeExplodeAnimation.transform.rotation = transform.rotation;
-            planeExplodeAnimation.Trigger(other.GetContact(0).point);
+
+            Vector3 explodePosition = new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z);
+            planeExplodeAnimation.Trigger(explodePosition);
 
             rb.isKinematic = true;
             rb.gameObject.SetActive(false);

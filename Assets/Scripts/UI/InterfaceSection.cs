@@ -10,6 +10,11 @@ public class InterfaceSection : MonoBehaviour
         Active(active);
     }
 
+    private void OnValidate()
+    {
+        Active(active);
+    }
+
     public void Active(bool activate)
     {
         active = activate;

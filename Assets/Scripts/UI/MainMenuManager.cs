@@ -53,6 +53,11 @@ public class MainMenuManager : MonoBehaviour
         GameManager.instance.QuitApplication();
     }
 
+    public void OnBackMenuButton()
+    {
+        OpenSection(menuSection);
+    }
+
     public void OnDayButton()
     {
         GameManager.instance.StartPlay(GameManager.MapSettings.Day);
