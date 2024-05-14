@@ -21,7 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Red
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: abc7cdbaefc7e60418ceb31e090565e2,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -30,8 +31,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -61,8 +61,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _LavaEmission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LavaNormals:
+        m_Texture: {fileID: 2800000, guid: 151f36acea3316545b54e55aa946fa8e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LavaTexture:
+        m_Texture: {fileID: 2800000, guid: 4e8f2a8df6acce84ea4dddea590bf17a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -79,6 +95,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_3dbb0f668da24f5ca198532e9b98bce9_Out_0_Texture2D:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -104,32 +124,56 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DeformStrength: 1
+    - _Depth: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _FresnelPower: 1
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _HeatDistortion: 0.5
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SimpleNoiseAmount: 0
+    - _SimpleNoisePower: 1
+    - _SimpleNoiseScale: 100
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
+    - _Strength: 1.5
     - _Surface: 0
+    - _TwirlSpeed: 0.1
+    - _TwirlStrength: 10
     - _UVSec: 0
+    - _VoronoiAmount: 0.5
+    - _VoronoiAngleOffset: 0.2
+    - _VoronoiScale: 5
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _distortionSpeed: 0.2
     m_Colors:
     - _BaseColor: {r: 0.9339623, g: 0.3039783, b: 0.3039783, a: 1}
-    - _Color: {r: 0.9339623, g: 0.3039783, b: 0.3039783, a: 1}
+    - _Color: {r: 0.7307761, g: 0.9622642, b: 0.8890841, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FresnelColor: {r: 6.867925, g: 2.286502, b: 0.1619793, a: 0}
+    - _LavaColor: {r: 0.8490566, g: 0.196319, b: 0.03604484, a: 0}
+    - _LavaNormalsSpeed: {r: 0.05, g: 0.1, b: 0, a: 0}
+    - _LavaRemap: {r: 0, g: 0.5, b: 0, a: 0}
+    - _LavaScale: {r: 1, g: 1, b: 0, a: 0}
+    - _LavaSpeed: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _OuterLavaColor: {r: 0.4235294, g: 0.3215686, b: 0.2509804, a: 0}
+    - _SimpleNoiseSpeed: {r: 0.1, g: 0.01, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _VoronoiSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
