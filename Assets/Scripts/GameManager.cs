@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("Created GameManager.");
         }
         else
         {
@@ -80,6 +81,8 @@ public class GameManager : MonoBehaviour
 
     private void OnPlaySceneLoaded()
     {
+        Debug.Log("Flight scene loaded.");
+        
         state = GameManagerState.Playing;
         
         timer = timerDuration;
@@ -91,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     private void OnMainMenuSceneLoaded()
     {
+        Debug.Log("Main menu scene loaded.");
     }
 
     // UI events.

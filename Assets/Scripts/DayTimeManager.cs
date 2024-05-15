@@ -24,7 +24,10 @@ public class DayTimeManager : MonoBehaviour
 
     private void Start()
     {
-        ApplySettings(GameManager.instance.mapSettings);
+        if(GameManager.instance == null)
+            Debug.LogWarning("No GameManager in the scene!");
+        else
+            ApplySettings(GameManager.instance.mapSettings);
     }
     
     public void ApplySettings(GameManager.MapSettings settings)

@@ -8412,54 +8412,6 @@ Transform:
   - {fileID: 2064749754}
   m_Father: {fileID: 1472146960}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1738974199
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1738974201}
-  - component: {fileID: 1738974200}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1738974200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738974199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469ac123825356b4db4ffa02548d6519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 1
-  timerDuration: 300
-  mapSettings: 0
-  collectables: 0
---- !u!4 &1738974201
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738974199}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -294.8549, y: -84.256805, z: -61.935505}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1746594287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8872,6 +8824,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: mapSettings
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7282936039800396239, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15974,6 +15931,5 @@ SceneRoots:
   - {fileID: 170076735}
   - {fileID: 452439433}
   - {fileID: 1784128955}
-  - {fileID: 1738974201}
   - {fileID: 2073529141}
   - {fileID: 1472146960}
