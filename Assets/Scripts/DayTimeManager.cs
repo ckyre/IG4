@@ -13,6 +13,7 @@ public class DayTimeManager : MonoBehaviour
         public float sunIntensity = 1.0f;
         public Material waterMaterial;
         public bool activatePlaneLights = false;
+        public Material skyMaterial;
     }
 
     [SerializeField] private Light sun;
@@ -20,6 +21,11 @@ public class DayTimeManager : MonoBehaviour
     [SerializeField] private MeshRenderer water;
 
     [SerializeField] private MapSettings daySettings, duskSettings, nightSettings;
+
+    private void Start()
+    {
+        ApplySettings(GameManager.instance.mapSettings);
+    }
     
     public void ApplySettings(GameManager.MapSettings settings)
     {
@@ -34,6 +40,8 @@ public class DayTimeManager : MonoBehaviour
         }
 
         ApplySunSettings(mapSettings);
+        ApplySkyboxSettings(mapSettings);
+        
         water.material = mapSettings.waterMaterial;
 
         foreach (Light l in planeNightLights)
@@ -47,5 +55,11 @@ public class DayTimeManager : MonoBehaviour
         sun.transform.eulerAngles = new Vector3(settings.sunAngle, sun.transform.eulerAngles.y, sun.transform.eulerAngles.z);
         sun.intensity = settings.sunIntensity;
         sun.color = settings.sunColor;
+    }
+
+    private void ApplySkyboxSettings(MapSettings settings)
+    {
+        RenderSettings.skybox = settings.skyMaterial;
+        DynamicGI.UpdateEnvironment();
     }
 }

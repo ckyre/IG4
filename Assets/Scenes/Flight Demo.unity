@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 9aa8ed67591432941bb76f12eb23ff91, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7491b71596ab3a847b54d340d8db78b5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -616,18 +616,21 @@ MonoBehaviour:
     sunIntensity: 1
     waterMaterial: {fileID: 2100000, guid: 4ee88a92dc239644ba5d71679d1aaf94, type: 2}
     activatePlaneLights: 0
+    skyMaterial: {fileID: 2100000, guid: 7491b71596ab3a847b54d340d8db78b5, type: 2}
   duskSettings:
     sunColor: {r: 0.8805031, g: 0.66218674, b: 0.41810045, a: 1}
     sunAngle: 40
     sunIntensity: 0.757
     waterMaterial: {fileID: 2100000, guid: 42262d713e05a324e9be83f6b242caa9, type: 2}
     activatePlaneLights: 1
+    skyMaterial: {fileID: 2100000, guid: 6b400beba251a29499b9409e76b21772, type: 2}
   nightSettings:
     sunColor: {r: 0.18114388, g: 0.21970932, b: 0.44654083, a: 1}
     sunAngle: 270
     sunIntensity: 0.356
     waterMaterial: {fileID: 2100000, guid: e7950770d76d9a34bb00f31afdfb6f2c, type: 2}
     activatePlaneLights: 1
+    skyMaterial: {fileID: 2100000, guid: 335fc77999bd2b04985d7e8e7b1fd0e1, type: 2}
 --- !u!114 &170076738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8425,7 +8428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1738974200
 MonoBehaviour:
   m_ObjectHideFlags: 0

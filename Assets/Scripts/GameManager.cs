@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameManagerState state;
     [Header("Game settings")]
     [SerializeField] private double timerDuration = 30.0f;
-    [SerializeField] private MapSettings mapSettings;
+    public MapSettings mapSettings;
     [Header("Player current stats")]
     [SerializeField] private int collectables = 0;
     
@@ -87,8 +87,6 @@ public class GameManager : MonoBehaviour
 
         collectablesCount = FindObjectsOfType<Collectable>().Length;
         FlightHUD.instance.UpdateCollectables(collectables, collectablesCount);
-
-        FindObjectOfType<DayTimeManager>().ApplySettings(mapSettings);
     }
 
     private void OnMainMenuSceneLoaded()
