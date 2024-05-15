@@ -14,6 +14,11 @@ public class DayTimeManager : MonoBehaviour
         public Material waterMaterial;
         public bool activatePlaneLights = false;
         public Material skyMaterial;
+        public Color fogColor = Color.white;
+        public float fogDensity = 0.0008f;
+        [Range(0.0f, 5.0f)]
+        public float indirectLightingForce = 1.0f;
+        
     }
 
     [SerializeField] private Light sun;
@@ -44,7 +49,10 @@ public class DayTimeManager : MonoBehaviour
 
         ApplySunSettings(mapSettings);
         ApplySkyboxSettings(mapSettings);
-        
+        ApplyFogSettings(mapSettings);
+        ApplyLightingSettings(mapSettings);
+
+
         water.material = mapSettings.waterMaterial;
 
         foreach (Light l in planeNightLights)
@@ -58,6 +66,24 @@ public class DayTimeManager : MonoBehaviour
         sun.transform.eulerAngles = new Vector3(settings.sunAngle, sun.transform.eulerAngles.y, sun.transform.eulerAngles.z);
         sun.intensity = settings.sunIntensity;
         sun.color = settings.sunColor;
+    }
+
+    private void ApplyFogSettings(MapSettings settings)
+    {
+        RenderSettings.fogColor = settings.fogColor;
+        RenderSettings.fogDensity = settings.fogDensity;
+    }
+
+    private void ApplyLightingSettings(MapSettings settings)
+    {
+        // Create an instance of LightingSettings
+        LightingSettings lightingSettings = new LightingSettings();
+
+        // Configure the LightingSettings object
+        lightingSettings.indirectScale = settings.indirectLightingForce;
+
+        // Assign the LightingSettings object to the active Scene
+        //Lightmapping.lightingSettings = lightingSettings;
     }
 
     private void ApplySkyboxSettings(MapSettings settings)
