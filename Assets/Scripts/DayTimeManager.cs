@@ -12,17 +12,14 @@ public class DayTimeManager : MonoBehaviour
         [Range(0.0f, 1.0f)]
         public float sunIntensity = 1.0f;
         public Material waterMaterial;
-        public bool activatePlaneLights = false;
+        public bool activateLights = false;
         public Material skyMaterial;
         public Color fogColor = Color.white;
-        public float fogDensity = 0.0008f;
-        [Range(0.0f, 5.0f)]
-        public float indirectLightingForce = 1.0f;
-        
+        public float fogDensity = 0.0008f;  
     }
 
     [SerializeField] private Light sun;
-    [SerializeField] private List<Light> planeNightLights = new List<Light>();
+    [SerializeField] private List<GameObject> NightLights = new List<GameObject>();
     [SerializeField] private MeshRenderer water;
 
     [SerializeField] private MapSettings daySettings, duskSettings, nightSettings;
@@ -50,14 +47,13 @@ public class DayTimeManager : MonoBehaviour
         ApplySunSettings(mapSettings);
         ApplySkyboxSettings(mapSettings);
         ApplyFogSettings(mapSettings);
-        ApplyLightingSettings(mapSettings);
 
 
         water.material = mapSettings.waterMaterial;
 
-        foreach (Light l in planeNightLights)
+        foreach (GameObject l in NightLights)
         {
-            l.gameObject.SetActive(mapSettings.activatePlaneLights);
+            l.gameObject.SetActive(mapSettings.activateLights);
         }
     }
 
@@ -72,18 +68,6 @@ public class DayTimeManager : MonoBehaviour
     {
         RenderSettings.fogColor = settings.fogColor;
         RenderSettings.fogDensity = settings.fogDensity;
-    }
-
-    private void ApplyLightingSettings(MapSettings settings)
-    {
-        // Create an instance of LightingSettings
-        LightingSettings lightingSettings = new LightingSettings();
-
-        // Configure the LightingSettings object
-        lightingSettings.indirectScale = settings.indirectLightingForce;
-
-        // Assign the LightingSettings object to the active Scene
-        //Lightmapping.lightingSettings = lightingSettings;
     }
 
     private void ApplySkyboxSettings(MapSettings settings)

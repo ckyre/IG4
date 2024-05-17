@@ -52,7 +52,7 @@ Material:
     m_Floats:
     - _Depth: 0.98
     - _Displacement: 0.02
-    - _DisplacementAmount: 1
+    - _DisplacementAmount: 0.0005
     - _DisplacementScale: 300
     - _DisplacementSpeed: 20
     - _Float: 0
