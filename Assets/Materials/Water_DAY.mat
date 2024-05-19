@@ -52,13 +52,15 @@ Material:
     m_Floats:
     - _Depth: 0.98
     - _Displacement: 0.02
-    - _DisplacementAmount: 1
-    - _DisplacementScale: 200
+    - _DisplacementAmount: 0.0005
+    - _DisplacementScale: 300
     - _DisplacementSpeed: 20
     - _Float: 0
     - _FoamDepth: 0.47
     - _FoamStrength: 0.98
     - _Normal_Strength: 0.097
+    - _NormalsScale: 2
+    - _NormalsSpeed: 0.5
     - _PRESET: 0
     - _QueueControl: 0
     - _QueueOffset: 0
