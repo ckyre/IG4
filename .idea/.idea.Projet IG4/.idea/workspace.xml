@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75747ef2-6508-4c8c-aa1c-e0c009513370" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayTimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayTimeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +111,7 @@
       <workItem from="1715675418014" duration="3540000" />
       <workItem from="1715715437015" duration="806000" />
       <workItem from="1715716877547" duration="731000" />
-      <workItem from="1715770752097" duration="269000" />
+      <workItem from="1715770752097" duration="678000" />
     </task>
     <servers />
   </component>
