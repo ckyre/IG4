@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,7 +18,6 @@ public class GameManager : MonoBehaviour
     public MapSettings mapSettings;
     [Header("Player current stats")]
     [SerializeField] private int collectables = 0;
-    [SerializeField] private VisualEffect collectVFX;
 
     // In-game variables.
     private double timer;
@@ -138,7 +136,6 @@ public class GameManager : MonoBehaviour
     {
         if (state == GameManagerState.Playing)
         {
-            PlayCollectVFX();
             collectables++;
 
             if (collectables >= collectablesCount)
@@ -160,11 +157,4 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayCollectVFX()
-    {
-        if (collectVFX != null)
-        {
-            collectVFX.Play();
-        }
-    }
 }
