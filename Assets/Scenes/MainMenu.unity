@@ -3631,7 +3631,7 @@ MonoBehaviour:
   state: 0
   timerDuration: 300
   mapSettings: 0
-  collectables: 0
+  collectables: 9
 --- !u!4 &1761244693
 Transform:
   m_ObjectHideFlags: 0
