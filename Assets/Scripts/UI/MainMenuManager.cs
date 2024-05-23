@@ -1,22 +1,30 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private InterfaceSection startSection, menuSection, gameSettingsSection, endSection;
+    [SerializeField] private InterfaceSection startSection, menuSection, gameSettingsSection, looseSection, winSection;
     [SerializeField] private KeyCode startButton = KeyCode.Space;
-
+    [SerializeField] private TMP_Text resultsText;
+    
     private InterfaceSection currentSection;
 
     private void Start()
     {
         GameManager.GameManagerState GMState = GameManager.instance.CurrentState();
 
-        if (GMState == GameManager.GameManagerState.Win ||
-            GMState == GameManager.GameManagerState.Loose)
+        if (GMState == GameManager.GameManagerState.Win)
         {
-            OpenSection(endSection);
+            int collectables = GameManager.instance.CollectablesCount();
+            double time = GameManager.instance.CurrentTimer();
+            resultsText.text = String.Format("Score: {0}\nTime: {1:N2}", collectables, time);
+            OpenSection(winSection);
+        }
+        else if (GMState == GameManager.GameManagerState.Loose)
+        {
+            OpenSection(looseSection);
         }
         else
         {

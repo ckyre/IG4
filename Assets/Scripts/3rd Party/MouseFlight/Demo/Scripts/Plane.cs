@@ -167,5 +167,10 @@ namespace MFlight.Demo
                                                 -turnTorque.z * roll) * forceMult,
                                     ForceMode.Force);
         }
+
+        public bool IsStopped()
+        {
+            return stop;
+        }
     }
 }

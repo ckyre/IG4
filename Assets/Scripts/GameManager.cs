@@ -64,6 +64,16 @@ public class GameManager : MonoBehaviour
     {
         return state;
     }
+
+    public int CollectablesCount()
+    {
+        return collectables;
+    }
+
+    public double CurrentTimer()
+    {
+        return timerDuration - timer;
+    }
     
     // Scene management events.
     
@@ -81,8 +91,6 @@ public class GameManager : MonoBehaviour
 
     private void OnPlaySceneLoaded()
     {
-        Debug.Log("Flight scene loaded.");
-        
         state = GameManagerState.Playing;
         
         timer = timerDuration;
@@ -94,7 +102,6 @@ public class GameManager : MonoBehaviour
 
     private void OnMainMenuSceneLoaded()
     {
-        Debug.Log("Main menu scene loaded.");
     }
 
     // UI events.
@@ -115,7 +122,7 @@ public class GameManager : MonoBehaviour
     public void PlayerWin()
     {
         state = GameManagerState.Win;
-        SceneManager.LoadScene(0);
+        StartCoroutine(PlayerWinAnimation(1.5f));
     }
 
     public void PlayerLoose(float delay = 0.0f)
@@ -125,6 +132,14 @@ public class GameManager : MonoBehaviour
     }
     
     private IEnumerator PlayerLooseAnimation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        FlightHUD.instance.FadeOut();
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene(0);
+    }
+    
+    private IEnumerator PlayerWinAnimation(float delay)
     {
         yield return new WaitForSeconds(delay);
         FlightHUD.instance.FadeOut();

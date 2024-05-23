@@ -40,8 +40,18 @@ public class PlaneAnimation : MonoBehaviour {
 
     void Update () {
         // https://en.wikipedia.org/wiki/Aircraft_principal_axes
-        propeller.Rotate (Vector3.forward * propSpeed * Time.deltaTime);
 
+        if (plane.IsStopped() == true)
+        {
+            propeller.Rotate (Vector3.forward * (propSpeed / 4) * Time.deltaTime);
+        }
+
+        else
+        {
+            propeller.Rotate (Vector3.forward * propSpeed * Time.deltaTime);
+        }
+
+        
         // Roll
         float targetRoll = plane.Roll;
         smoothedRoll = Mathf.SmoothDamp (smoothedRoll, targetRoll, ref smoothRollV, Time.deltaTime * smoothTime);

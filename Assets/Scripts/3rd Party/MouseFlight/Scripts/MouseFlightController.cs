@@ -3,6 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 //
 
+using System;
 using UnityEngine;
 
 namespace MFlight
@@ -37,6 +38,8 @@ namespace MFlight
         [SerializeField] [Tooltip("How far the boresight and mouse flight are from the aircraft")]
         private float aimDistance = 500f;
 
+        public bool freezeControls = true;
+        
         [Space]
         [SerializeField] [Tooltip("How far the boresight and mouse flight are from the aircraft")]
         private bool showDebugInfo = false;
@@ -102,25 +105,43 @@ namespace MFlight
             }
         }
 
+        private void Start()
+        {
+            if (aircraft != null)
+            {
+                transform.rotation = aircraft.rotation;
+            }
+        }
+
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-            if (useFixed == false)
-                UpdateCameraPos();
 
-            RotateRig();
+            if (useFixed == false)
+            {
+                UpdateCameraPos();
+            }
+            
+            if (freezeControls == false)
+            {
+                RotateRig();
+            }
         }
 
         private void FixedUpdate()
         {
-            if (useFixed == true)
+            if (useFixed == true && freezeControls == false)
+            {
                 UpdateCameraPos();
+            }
         }
 
-        void LateUpdate() {
+        void LateUpdate()
+        {
             cam.position = cameraRig.position;
             cam.rotation = cameraRig.rotation;
             cam.position += cam.forward * offset.z;
