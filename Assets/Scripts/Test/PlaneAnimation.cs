@@ -63,7 +63,10 @@ public class PlaneAnimation : MonoBehaviour {
     {
         if (other.CompareTag("Collectable") == true)
             return;
-        
+
+        if (other.CompareTag("effect") == true)
+            return;
+
         float velocity = rb.velocity.magnitude;
         if (velocity > 5.0f)
         {

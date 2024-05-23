@@ -4,6 +4,7 @@
 //
 
 using UnityEngine;
+using System.Collections;
 
 namespace MFlight.Demo
 {
@@ -148,15 +149,19 @@ namespace MFlight.Demo
             // Ultra simple flight where the plane just gets pushed forward and manipulated
             // with torques to turn.
 
+            float thrustReductionRate = 200f;
+
             if (stop == true)
             {
                 rigid.AddForce(-Vector3.up * thrust * forceMult, ForceMode.Force);
+                pitch = 1f;
             }
             else
             {
                 rigid.AddRelativeForce(Vector3.forward * thrust * forceMult, ForceMode.Force);
             }
-            
+
+
             rigid.AddRelativeTorque(new Vector3(turnTorque.x * pitch,
                                                 turnTorque.y * yaw,
                                                 -turnTorque.z * roll) * forceMult,
