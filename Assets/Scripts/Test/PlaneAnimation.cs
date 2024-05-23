@@ -50,7 +50,6 @@ public class PlaneAnimation : MonoBehaviour {
         {
             propeller.Rotate (Vector3.forward * propSpeed * Time.deltaTime);
         }
-
         
         // Roll
         float targetRoll = plane.Roll;
@@ -67,6 +66,9 @@ public class PlaneAnimation : MonoBehaviour {
         float targetYaw = plane.Yaw;
         smoothedYaw = Mathf.SmoothDamp (smoothedYaw, targetYaw, ref smoothYawV, Time.deltaTime * smoothTime);
         rudder.localEulerAngles = new Vector3 (rudder.localEulerAngles.x, -smoothedYaw * rudderMax, rudder.localEulerAngles.z);
+        
+        // Audio.
+        FlightAudioManager.instance.SetWindVolume(transform.position.y);
     }
 
     private void OnTriggerEnter(Collider other)

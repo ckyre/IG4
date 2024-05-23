@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
         if (state == GameManagerState.Playing)
         {
             collectables++;
+            FlightAudioManager.instance.PlaneCollect();
 
             if (collectables >= collectablesCount)
             {
@@ -168,6 +169,7 @@ public class GameManager : MonoBehaviour
     {
         if (state == GameManagerState.Playing)
         {
+            FlightAudioManager.instance.PlaneExplosion();
             PlayerLoose(2.0f);
         }
     }

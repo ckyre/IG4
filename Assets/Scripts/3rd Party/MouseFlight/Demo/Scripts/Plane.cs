@@ -79,11 +79,13 @@ namespace MFlight.Demo
             if (Input.GetKey(KeyCode.Space) == true)
             {
                 stop = true;
+                FlightAudioManager.instance.ActiveEngineSound(true);
             }
 
             if (Input.GetKeyUp(KeyCode.Space) == true)
             {
                 stop = false;
+                FlightAudioManager.instance.ActiveEngineSound(false);
             }
 
             // Calculate the autopilot stick inputs.
