@@ -39,6 +39,13 @@ namespace MFlight
         private float aimDistance = 500f;
 
         public bool freezeControls = true;
+
+        [SerializeField]
+        private float cameraShakingForce = 0.1f;
+        
+        [SerializeField]
+        private Vector3 cameraShake;
+
         
         [Space]
         [SerializeField] [Tooltip("How far the boresight and mouse flight are from the aircraft")]
@@ -142,11 +149,18 @@ namespace MFlight
 
         void LateUpdate()
         {
+            // Move camera to follow the rig.
             cam.position = cameraRig.position;
             cam.rotation = cameraRig.rotation;
             cam.position += cam.forward * offset.z;
             cam.position += cam.up * offset.y;
             cam.position += cam.right * offset.x;
+            
+            // Add noise to camera position.
+            float xNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.x) * cameraShakingForce) * 2 - 1;
+            float yNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.y) * cameraShakingForce) * 2 - 1;
+            float zNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.z) * cameraShakingForce) * 2 - 1;
+            cam.position += new Vector3(cameraShake.x * xNoise, cameraShake.y * yNoise, cameraShake.z * zNoise);
         }
 
         private void RotateRig()

@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="75747ef2-6508-4c8c-aa1c-e0c009513370" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3rd Party/MouseFlight/Demo/Scripts/Plane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3rd Party/MouseFlight/Demo/Scripts/Plane.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/PlaneAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/PlaneAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/MainAudioMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/MainAudioMixer.mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FlightImprovements/FlightImprovements.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FlightImprovements/FlightImprovements.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3rd Party/MouseFlight/Scripts/MouseFlightController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3rd Party/MouseFlight/Scripts/MouseFlightController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/New Universal Render Pipeline Asset_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/New Universal Render Pipeline Asset_Renderer.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +116,8 @@
       <workItem from="1715716877547" duration="731000" />
       <workItem from="1715770752097" duration="678000" />
       <workItem from="1716475297435" duration="6060000" />
-      <workItem from="1716491795192" duration="2729000" />
+      <workItem from="1716491795192" duration="3359000" />
+      <workItem from="1716543540938" duration="1693000" />
     </task>
     <servers />
   </component>
