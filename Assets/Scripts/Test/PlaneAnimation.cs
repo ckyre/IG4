@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlaneAnimation : MonoBehaviour {
 
@@ -19,9 +20,18 @@ public class PlaneAnimation : MonoBehaviour {
     [Header ("Rudder (Yaw)")]
     public Transform rudder;
     public float rudderMax = 20;
-    
+
     [Space] [SerializeField] private PlaneExplodeAnimation planeExplodeAnimation;
-    
+
+    [Space] public VisualEffect visualEffect1; // First VisualEffect component
+    public VisualEffect visualEffect2; // Second VisualEffect component
+    public float amplitude = 1.0f; // Amplitude of the sine wave
+    public float frequency = 1.0f; // Frequency of the sine wave
+    public float maxAltitude = 100.0f; // Altitude at which power is 0
+    public float minAltitude = 96.0f;  // Altitude at which power is 1
+    private float currentSpeed = 1.0f;
+    private float targetSpeed = 1.0f;
+
     // Smoothing vars
     float smoothedRoll;
     float smoothRollV;
@@ -69,6 +79,29 @@ public class PlaneAnimation : MonoBehaviour {
         
         // Audio.
         FlightAudioManager.instance.SetWindVolume(transform.position.y);
+
+        // Splash
+
+        // Calculate the new flow rate using a sine wave function
+        float interpolationSpeed = 5.0f;
+        
+
+        if (plane.IsStopped())
+        {
+            targetSpeed = 0.1f;
+        }
+        else
+        {
+            targetSpeed = 1.0f;
+        }
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * interpolationSpeed);
+        float altitude = transform.position.y;
+        float power = CalculatePower(altitude);
+        float flowRate = currentSpeed* power * 100;
+
+        // Set the "Flow_Rate" parameter in both VisualEffects
+        visualEffect1.SetFloat("Flow_Rate", flowRate);
+        visualEffect2.SetFloat("Flow_Rate", flowRate);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -93,5 +126,16 @@ public class PlaneAnimation : MonoBehaviour {
             
             GameManager.instance.PlayerCrash();
         }
+    }
+
+    float CalculatePower(float altitude)
+    {
+        // clipping altitude
+        altitude = Mathf.Clamp(altitude, minAltitude, maxAltitude);
+
+        // Lerp
+        float power = Mathf.InverseLerp(maxAltitude, minAltitude, altitude);
+
+        return power;
     }
 }

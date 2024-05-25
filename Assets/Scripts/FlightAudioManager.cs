@@ -30,7 +30,7 @@ public class FlightAudioManager : MonoBehaviour
 
     public void SetWindVolume(float planeHeight)
     {
-        Vector2 planeRange = new Vector2(0.0f, 600.0f);
+        Vector2 planeRange = new Vector2(90.0f, 1000.0f);
         float d = Mathf.Clamp01(planeHeight / (planeRange.y - planeRange.x));
         windSource.volume = windMaxVolume * d;
     }
