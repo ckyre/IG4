@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
             {
                 endTimerTrigger = true;
                 audioSource.PlayOneShot(endTimerAudioClip);
+                FlightHUD.instance.StartFinalCountdown();
             }
         }
     }
@@ -151,6 +152,7 @@ public class GameManager : MonoBehaviour
     
     private IEnumerator PlayerWinAnimation(float delay)
     {
+        FlightHUD.instance.StartVictoryMessage();
         yield return new WaitForSeconds(delay);
         FlightHUD.instance.FadeOut();
         yield return new WaitForSeconds(2.0f);

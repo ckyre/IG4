@@ -11,6 +11,7 @@ public class FlightHUD : MonoBehaviour
     [Header("References")]
     [SerializeField] private TMP_Text collectablesText;
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private Animator hudAnimator;
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private MouseFlightController mouseController;
     
@@ -43,6 +44,16 @@ public class FlightHUD : MonoBehaviour
     public void FadeOut()
     {
         fadeAnimator.SetBool("Show", false);
+    }
+
+    public void StartFinalCountdown()
+    {
+        hudAnimator.SetTrigger("Countdown");
+    }
+
+    public void StartVictoryMessage()
+    {
+        hudAnimator.SetTrigger("Victory");
     }
 
     private IEnumerator StartFlightAnimation()
