@@ -20,6 +20,7 @@ namespace MFlight.Demo
     {
         [Header("Components")]
         [SerializeField] private MouseFlightController controller = null;
+        [SerializeField] private AudioSource engineAudioSource = null; // Add reference to AudioSource
 
         [Header("Physics")]
         [Tooltip("Force to push plane forwards with")] public float thrust = 100f;
@@ -46,7 +47,14 @@ namespace MFlight.Demo
 
         private bool stop = false;
         private float defaultThrust = 100.0f;
-        
+
+        public float fadeDuration = 1.0f; // Duration of the fade effect in seconds
+        public float targetVolume = 1.0f; // Target volume to reach
+        public float minPitch = 0.5f; // Minimum pitch when the engine is stopped
+        public float maxPitch = 1.5f; // Maximum pitch when the engine is running
+
+        public float turnPitchFactor = 0.2f; // Factor to adjust pitch during sharp turns
+
         private void Awake()
         {
             rigid = GetComponent<Rigidbody>();
@@ -54,6 +62,8 @@ namespace MFlight.Demo
             
             if (controller == null)
                 Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
+
+            targetVolume = engineAudioSource.volume; // Initialize target volume
         }
 
         private void Update()
@@ -76,17 +86,44 @@ namespace MFlight.Demo
                 rollOverride = true;
             }
 
-            if (Input.GetKey(KeyCode.Space) == true)
+            if (Input.GetKey(KeyCode.Space))
             {
-                stop = true;
-                FlightAudioManager.instance.ActiveEngineSound(true);
+                if (!stop)
+                {
+                    stop = true;
+                }
             }
 
-            if (Input.GetKeyUp(KeyCode.Space) == true)
+            if (Input.GetKeyUp(KeyCode.Space))
             {
-                stop = false;
-                FlightAudioManager.instance.ActiveEngineSound(false);
+                if (stop)
+                {
+                    stop = false;
+                }
             }
+
+            // Adjust volume and pitch smoothly
+            float targetVolume = stop ? 0.0f : 1.0f;
+            float targetPitch = stop ? minPitch : maxPitch;
+
+            // Use logarithmic interpolation for volume
+            engineAudioSource.volume = Mathf.Lerp(engineAudioSource.volume, Mathf.Pow(targetVolume, 2.0f), Time.deltaTime / fadeDuration);
+
+            // Linear interpolation for pitch
+            engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, targetPitch, Time.deltaTime / fadeDuration);
+
+            // Calculate pitch adjustment based on plane maneuvers
+            if (!stop)
+            {
+                float angularVelocityPitch = Mathf.Abs(rigid.angularVelocity.x);
+                float angularVelocityRoll = Mathf.Abs(rigid.angularVelocity.z);
+                float maneuverPitchAdjustment = 1.0f + (angularVelocityPitch + angularVelocityRoll) * turnPitchFactor;
+                targetPitch *= maneuverPitchAdjustment;
+            }
+
+            // Linear interpolation for pitch
+            engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, targetPitch, Time.deltaTime / fadeDuration);
+
 
             // Calculate the autopilot stick inputs.
             float autoYaw = 0f;

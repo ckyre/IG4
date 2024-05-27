@@ -14,6 +14,8 @@ public class FlightAudioManager : MonoBehaviour
     private AudioClip explosionClip;
     [SerializeField]
     private AudioClip collectClip;
+    [SerializeField]
+    private AudioClip startCountDown;
 
     [SerializeField]
     private AudioSource windSource;
@@ -30,7 +32,7 @@ public class FlightAudioManager : MonoBehaviour
 
     public void SetWindVolume(float planeHeight)
     {
-        Vector2 planeRange = new Vector2(90.0f, 1000.0f);
+        Vector2 planeRange = new Vector2(0.0f, 800.0f);
         float d = Mathf.Clamp01(planeHeight / (planeRange.y - planeRange.x));
         windSource.volume = windMaxVolume * d;
     }
@@ -43,6 +45,11 @@ public class FlightAudioManager : MonoBehaviour
     public void PlaneCollect()
     {
         gameplayEventsSource.PlayOneShot(collectClip);
+    }
+
+    public void StartCountDown()
+    {
+        gameplayEventsSource.PlayOneShot(startCountDown);
     }
 
     public void ActiveEngineSound(bool stop)

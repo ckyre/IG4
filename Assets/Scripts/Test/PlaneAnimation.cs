@@ -31,6 +31,12 @@ public class PlaneAnimation : MonoBehaviour {
     public float minAltitude = 96.0f;  // Altitude at which power is 1
     private float currentSpeed = 1.0f;
     private float targetSpeed = 1.0f;
+    private float currentSplashVolume = 1.0f;
+    private float targetSplashVolume = 1.0f;
+    [SerializeField]
+    private AudioSource splashSource = null;
+    [SerializeField]
+    private AudioSource waterAmbienceSource = null;
 
     // Smoothing vars
     float smoothedRoll;
@@ -89,15 +95,20 @@ public class PlaneAnimation : MonoBehaviour {
         if (plane.IsStopped())
         {
             targetSpeed = 0.1f;
+            targetSplashVolume = 0.0f;
         }
         else
         {
             targetSpeed = 1.0f;
+            targetSplashVolume = 1.0f;
         }
         currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * interpolationSpeed);
+        currentSplashVolume = Mathf.Lerp(currentSplashVolume, targetSplashVolume, Time.deltaTime * interpolationSpeed);
         float altitude = transform.position.y;
         float power = CalculatePower(altitude);
         float flowRate = currentSpeed* power * 100;
+        splashSource.volume = currentSplashVolume * power;
+        waterAmbienceSource.volume = power;
 
         // Set the "Flow_Rate" parameter in both VisualEffects
         visualEffect1.SetFloat("Flow_Rate", flowRate);

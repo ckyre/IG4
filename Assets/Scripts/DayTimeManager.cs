@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class DayTimeManager : MonoBehaviour
 {
@@ -15,9 +17,11 @@ public class DayTimeManager : MonoBehaviour
         public bool activateLights = false;
         public Material skyMaterial;
         public Color fogColor = Color.white;
-        public float fogDensity = 0.0008f;  
+        public float fogDensity = 0.0008f;
+        public Color underwaterColorFilter;
     }
 
+    [SerializeField] public Volume underwaterVolume;
     [SerializeField] private Light sun;
     [SerializeField] private List<GameObject> NightLights = new List<GameObject>();
     [SerializeField] private MeshRenderer water;
@@ -47,6 +51,7 @@ public class DayTimeManager : MonoBehaviour
         ApplySunSettings(mapSettings);
         ApplySkyboxSettings(mapSettings);
         ApplyFogSettings(mapSettings);
+        ApplyUnderWaterColorFilter(mapSettings);
 
 
         water.material = mapSettings.waterMaterial;
@@ -74,5 +79,14 @@ public class DayTimeManager : MonoBehaviour
     {
         RenderSettings.skybox = settings.skyMaterial;
         DynamicGI.UpdateEnvironment();
+    }
+
+    private void ApplyUnderWaterColorFilter(MapSettings settings)
+    {
+        if (underwaterVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments))
+        {
+            // Modify the color filter attribute
+            colorAdjustments.colorFilter.value = settings.underwaterColorFilter;
+        }
     }
 }

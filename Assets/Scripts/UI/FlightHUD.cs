@@ -21,6 +21,7 @@ public class FlightHUD : MonoBehaviour
 
     private void Start()
     {
+        FlightAudioManager.instance.StartCountDown();
         if (mouseController != null)
         {
             mouseController.freezeControls = true;
