@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private double timer;
     private int collectablesCount = 1;
     private bool endTimerTrigger = false;
+    private bool endTimerAnimTrigger = false;
 
     private void Awake()
     {
@@ -66,6 +67,11 @@ public class GameManager : MonoBehaviour
             {
                 endTimerTrigger = true;
                 audioSource.PlayOneShot(endTimerAudioClip);
+            }
+
+            if (endTimerAnimTrigger != true && timer <= timerForEndTimer+1.0f)
+            {
+                endTimerAnimTrigger = true;
                 FlightHUD.instance.StartFinalCountdown();
             }
         }
