@@ -18,10 +18,14 @@ public class GameManager : MonoBehaviour
     public MapSettings mapSettings;
     [Header("Player current stats")]
     [SerializeField] private int collectables = 0;
+    [Space, SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip endTimerAudioClip;
+    public float timerForEndTimer = 10.0f;
 
     // In-game variables.
     private double timer;
     private int collectablesCount = 1;
+    private bool endTimerTrigger = false;
 
     private void Awake()
     {
@@ -56,6 +60,12 @@ public class GameManager : MonoBehaviour
             if (timer <= 0.0f)
             {
                 PlayerLoose(1.0f);
+            }
+
+            if (endTimerTrigger != true && timer <= timerForEndTimer)
+            {
+                endTimerTrigger = true;
+                audioSource.PlayOneShot(endTimerAudioClip);
             }
         }
     }

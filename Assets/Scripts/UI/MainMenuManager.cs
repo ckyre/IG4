@@ -10,7 +10,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private TMP_Text resultsText;
     [Space, SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip buttonClip;
-    
+    [SerializeField] private AudioClip spaceBarClip;
+
     private InterfaceSection currentSection;
 
     private void Start()
@@ -38,6 +39,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(startButton) && currentSection == startSection)
         {
+            audioSource.PlayOneShot(spaceBarClip);
             OpenSection(menuSection);
         }
     }
