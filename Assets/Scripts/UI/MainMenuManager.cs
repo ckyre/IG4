@@ -22,7 +22,9 @@ public class MainMenuManager : MonoBehaviour
         {
             int collectables = GameManager.instance.CollectablesCount();
             double time = GameManager.instance.CurrentTimer();
-            resultsText.text = String.Format("Score: {0}\nTime: {1:N2}", collectables, time);
+            double minutes = Math.Floor(time / 60);
+            double seconds = Math.Floor(time % 60);
+            resultsText.text = String.Format("Score: {0}\nTime: {1:00}:{2:00}", collectables, minutes, seconds);
             OpenSection(winSection);
         }
         else if (GMState == GameManager.GameManagerState.Loose)

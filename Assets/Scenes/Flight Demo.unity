@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.64948714, g: 0.77311146, b: 0.834781, a: 1}
+  m_IndirectSpecularColor: {r: 0.6494871, g: 0.7731115, b: 0.834781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -849,7 +849,7 @@ MonoBehaviour:
     fogColor: {r: 0, g: 0, b: 0, a: 1}
     fogDensity: 0.0004
     underwaterColorFilter: {r: 0.4198113, g: 0.42948124, b: 1, a: 0}
-    cloudsColor: {r: 0.41960788, g: 0.43137258, b: 1, a: 1}
+    cloudsColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
 --- !u!114 &170076738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13747,7 +13747,7 @@ PrefabInstance:
     - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: mapSettings
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
