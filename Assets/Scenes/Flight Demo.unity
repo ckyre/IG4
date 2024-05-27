@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.6494871, g: 0.7731115, b: 0.834781, a: 1}
+  m_IndirectSpecularColor: {r: 0.64948714, g: 0.77311146, b: 0.834781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -810,6 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   underwaterVolume: {fileID: 2068445211}
   sun: {fileID: 170076734}
+  clouds: {fileID: 11400000, guid: 919ce0a000775b44fa7676a08852e6e8, type: 2}
   NightLights:
   - {fileID: 1243877497}
   - {fileID: 666311751}
@@ -826,6 +827,7 @@ MonoBehaviour:
     fogColor: {r: 1, g: 1, b: 1, a: 1}
     fogDensity: 0.0004
     underwaterColorFilter: {r: 0.31764707, g: 0.6901961, b: 1, a: 1}
+    cloudsColor: {r: 1, g: 1, b: 1, a: 1}
   duskSettings:
     sunColor: {r: 1, g: 0.7604733, b: 0.495283, a: 1}
     sunAngle: 0
@@ -836,6 +838,7 @@ MonoBehaviour:
     fogColor: {r: 1, g: 0.7541468, b: 0.5613208, a: 1}
     fogDensity: 0.0008
     underwaterColorFilter: {r: 1, g: 0.7012579, b: 0.3726415, a: 0}
+    cloudsColor: {r: 1, g: 0.7607844, b: 0.49411768, a: 1}
   nightSettings:
     sunColor: {r: 0.6650944, g: 0.8470175, b: 1, a: 1}
     sunAngle: 20
@@ -846,6 +849,7 @@ MonoBehaviour:
     fogColor: {r: 0, g: 0, b: 0, a: 1}
     fogDensity: 0.0004
     underwaterColorFilter: {r: 0.4198113, g: 0.42948124, b: 1, a: 0}
+    cloudsColor: {r: 0.41960788, g: 0.43137258, b: 1, a: 1}
 --- !u!114 &170076738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12721,7 +12725,7 @@ PrefabInstance:
     - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: mapSettings
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 767761363437811858, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}

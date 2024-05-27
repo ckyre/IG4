@@ -19,10 +19,12 @@ public class DayTimeManager : MonoBehaviour
         public Color fogColor = Color.white;
         public float fogDensity = 0.0008f;
         public Color underwaterColorFilter;
+        public Color cloudsColor;
     }
 
     [SerializeField] public Volume underwaterVolume;
     [SerializeField] private Light sun;
+    [SerializeField] private CloudsSettings clouds;
     [SerializeField] private List<GameObject> NightLights = new List<GameObject>();
     [SerializeField] private MeshRenderer water;
 
@@ -53,7 +55,7 @@ public class DayTimeManager : MonoBehaviour
         ApplyFogSettings(mapSettings);
         ApplyUnderWaterColorFilter(mapSettings);
 
-
+        clouds.CloudsColor = mapSettings.cloudsColor;
         water.material = mapSettings.waterMaterial;
 
         foreach (GameObject l in NightLights)

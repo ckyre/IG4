@@ -8,6 +8,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private InterfaceSection startSection, menuSection, gameSettingsSection, looseSection, winSection;
     [SerializeField] private KeyCode startButton = KeyCode.Space;
     [SerializeField] private TMP_Text resultsText;
+    [Space, SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip buttonClip;
     
     private InterfaceSection currentSection;
 
@@ -53,31 +55,37 @@ public class MainMenuManager : MonoBehaviour
     
     public void OnPlayButton()
     {
+        audioSource.PlayOneShot(buttonClip);
         OpenSection(gameSettingsSection);
     }
 
     public void OnQuitButton()
     {
+        audioSource.PlayOneShot(buttonClip);
         GameManager.instance.QuitApplication();
     }
-
+    
     public void OnBackMenuButton()
     {
+        audioSource.PlayOneShot(buttonClip);
         OpenSection(menuSection);
     }
 
     public void OnDayButton()
     {
+        audioSource.PlayOneShot(buttonClip);
         GameManager.instance.StartPlay(GameManager.MapSettings.Day);
     }
     
     public void OnDuskButton()
     {
+        audioSource.PlayOneShot(buttonClip);
         GameManager.instance.StartPlay(GameManager.MapSettings.Dusk);
     }
     
     public void OnNightButton()
     {
+        audioSource.PlayOneShot(buttonClip);
         GameManager.instance.StartPlay(GameManager.MapSettings.Night);
     }
 }
