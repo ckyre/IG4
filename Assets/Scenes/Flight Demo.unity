@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.6494871, g: 0.7731115, b: 0.834781, a: 1}
+  m_IndirectSpecularColor: {r: 0.64948714, g: 0.77311146, b: 0.834781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11672,6 +11672,12 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4445429791703911487, guid: aea31ff8cbf3cc14b92535ccb6ea259b, type: 3}
+--- !u!95 &1481051490 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 740554716604148632, guid: 550c61a855cc7fa4488ef395f9984beb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1784128955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1488356017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4705676053814573969, guid: aea31ff8cbf3cc14b92535ccb6ea259b,
@@ -13796,8 +13802,13 @@ PrefabInstance:
     - target: {fileID: 3933459317522518942, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4300784166855808708, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: hudAnimator
+      value: 
+      objectReference: {fileID: 1481051490}
     - target: {fileID: 5545627492399041190, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: collectClip
@@ -13941,7 +13952,7 @@ PrefabInstance:
     - target: {fileID: 9117960546987222150, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 0
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
