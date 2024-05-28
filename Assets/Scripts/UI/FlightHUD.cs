@@ -58,7 +58,7 @@ public class FlightHUD : MonoBehaviour
 
     private IEnumerator StartFlightAnimation()
     {
-        yield return new WaitForSeconds(8.5f);
+        yield return new WaitForSeconds(4.5f);
 
         if (mouseController != null)
         {
