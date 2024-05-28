@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.6494871, g: 0.7731115, b: 0.834781, a: 1}
+  m_IndirectSpecularColor: {r: 0.64948714, g: 0.77311146, b: 0.834781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13747,18 +13747,23 @@ PrefabInstance:
     - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: mapSettings
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: timerDuration
-      value: 30
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: endTimerAudioClip
       value: 
       objectReference: {fileID: 8300000, guid: 6235516b7c895c54989e5c7b5de5cb86, type: 3}
+    - target: {fileID: 241200669733082453, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 767761363437811858, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -13777,22 +13782,52 @@ PrefabInstance:
     - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: cameraShake.x
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: cameraShake.y
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: cameraShake.z
-      value: 0
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: maxHeightShake
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: shakeFrequency
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: cameraShakingForce
-      value: 0
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: cameraShakeFrequency.x
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: cameraShakeFrequency.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: freeFallShakeFrequency
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454149129899754928, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: freeFallShakeFadeDuration
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 3884587655559471331, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
@@ -13824,6 +13859,26 @@ PrefabInstance:
       propertyPath: startCountDown
       value: 
       objectReference: {fileID: 8300000, guid: e3b587f8fa6d3de41af0fe43e8e0b538, type: 3}
+    - target: {fileID: 5596772271153444857, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.6419078
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596772271153444857, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.00000012124997
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596772271153444857, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.12236543
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596772271153444857, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.0013914488
+      objectReference: {fileID: 0}
     - target: {fileID: 5767928323893703554, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: maxPitch
@@ -13854,6 +13909,11 @@ PrefabInstance:
       propertyPath: engineAudioSource
       value: 
       objectReference: {fileID: 1570961608}
+    - target: {fileID: 5988814388127870858, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6947710949190653083, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: m_AnchoredPosition.x

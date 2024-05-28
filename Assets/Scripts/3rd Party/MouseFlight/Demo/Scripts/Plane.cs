@@ -4,7 +4,6 @@
 //
 
 using UnityEngine;
-using System.Collections;
 
 namespace MFlight.Demo
 {
@@ -46,6 +45,7 @@ namespace MFlight.Demo
         private bool pitchOverride = false;
 
         private bool stop = false;
+        private float stopTime = 0.0f;
         private float defaultThrust = 100.0f;
 
         public float fadeDuration = 1.0f; // Duration of the fade effect in seconds
@@ -91,6 +91,7 @@ namespace MFlight.Demo
                 if (!stop)
                 {
                     stop = true;
+                    stopTime = Time.time;
                 }
             }
 
@@ -123,8 +124,7 @@ namespace MFlight.Demo
 
             // Linear interpolation for pitch
             engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, targetPitch, Time.deltaTime / fadeDuration);
-
-
+            
             // Calculate the autopilot stick inputs.
             float autoYaw = 0f;
             float autoPitch = 0f;
@@ -193,23 +193,48 @@ namespace MFlight.Demo
             if (stop == true)
             {
                 rigid.AddForce(-Vector3.up * thrust * forceMult, ForceMode.Force);
-                pitch = 1f;
+                
+                /*Quaternion targetRotation = Quaternion.FromToRotation(transform.forward, -Vector3.up);
+                Quaternion newRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360.0f);
+                Quaternion deltaRotation = newRotation * Quaternion.Inverse(transform.rotation);
+                deltaRotation.ToAngleAxis(out float a, out Vector3 axis);
+
+                if (a > 0.01f)
+                {
+                    Vector3 torque = a * axis.normalized * forceMult;
+                    rigid.AddTorque(torque, ForceMode.Force);
+                }*/
+
+                Quaternion target = Quaternion.Euler(90.0f, transform.eulerAngles.y, transform.eulerAngles.z);
+                Quaternion diff = Quaternion.Inverse(rigid.rotation) * target;
+                Vector3 torque = rigid.rotation * OrientTorque(diff.eulerAngles);
+                rigid.AddTorque(torque * forceMult, ForceMode.Force);
             }
             else
             {
                 rigid.AddRelativeForce(Vector3.forward * thrust * forceMult, ForceMode.Force);
+                rigid.AddRelativeTorque(new Vector3(turnTorque.x * pitch, turnTorque.y * yaw, -turnTorque.z * roll) * forceMult, ForceMode.Force);
             }
-
-
-            rigid.AddRelativeTorque(new Vector3(turnTorque.x * pitch,
-                                                turnTorque.y * yaw,
-                                                -turnTorque.z * roll) * forceMult,
-                                    ForceMode.Force);
+        }
+        
+        private Vector3 OrientTorque(Vector3 torque)
+        {
+            return new Vector3
+            (
+                torque.x > 180f ? torque.x - 360f : torque.x,
+                torque.y > 180f ? torque.y - 360f : torque.y,
+                torque.z > 180f ? torque.z - 360f : torque.z
+            );
         }
 
         public bool IsStopped()
         {
             return stop;
+        }
+
+        public float StopDuration()
+        {
+            return Time.time - stopTime;
         }
     }
 }

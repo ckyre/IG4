@@ -5,6 +5,7 @@
 
 using System;
 using UnityEngine;
+using Plane = MFlight.Demo.Plane;
 
 namespace MFlight
 {
@@ -40,11 +41,13 @@ namespace MFlight
 
         public bool freezeControls = true;
 
-        [SerializeField]
-        private float cameraShakingForce = 0.1f;
+        [SerializeField] private float shakeFrequency;
+        [SerializeField] private float freeFallShakeFrequency;
+        [SerializeField] private float freeFallShakeFadeDuration;
         
-        [SerializeField]
-        private Vector3 cameraShake;
+        [SerializeField] private float maxHeightShake;
+        
+        [SerializeField] private Vector3 cameraShake;
 
         
         [Space]
@@ -54,6 +57,10 @@ namespace MFlight
         private Vector3 frozenDirection = Vector3.forward;
         private bool isMouseAimFrozen = false;
 
+        private Vector3 cshake;
+        
+        private Plane planeController;
+        
         /// <summary>
         /// Get a point along the aircraft's boresight projected out to aimDistance meters.
         /// Useful for drawing a crosshair to aim fixed forward guns with, or to indicate what
@@ -101,6 +108,8 @@ namespace MFlight
             if (cam == null)
                 Debug.LogError(name + "MouseFlightController - No camera transform assigned!");
 
+            planeController = aircraft.GetComponent<Plane>();
+            
             // To work correctly, the entire rig must not be parented to anything.
             // When parented to something (such as an aircraft) it will inherit those
             // rotations causing unintended rotations as it gets dragged around.
@@ -157,10 +166,25 @@ namespace MFlight
             cam.position += cam.right * offset.x;
             
             // Add noise to camera position.
-            float xNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.x) * cameraShakingForce) * 2 - 1;
-            float yNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.y) * cameraShakingForce) * 2 - 1;
-            float zNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.z) * cameraShakingForce) * 2 - 1;
-            cam.position += new Vector3(cameraShake.x * xNoise, cameraShake.y * yNoise, cameraShake.z * zNoise);
+            float f = 0.0f;
+            if (planeController.IsStopped() == true)
+            {
+                float duration = planeController.StopDuration();
+                float t = Mathf.Clamp01(duration / freeFallShakeFadeDuration);
+                cshake = cameraShake * t;
+                f = freeFallShakeFrequency;
+            }
+            else
+            {
+                float t = Mathf.Clamp01(aircraft.position.y / maxHeightShake);
+                cshake = cameraShake;
+                f = shakeFrequency * t;
+            }
+            
+            float xNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.x) * f) * 2 - 1;
+            float yNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.y) * f) * 2 - 1;
+            float zNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.z) * f) * 2 - 1;
+            cam.position += new Vector3(cshake.x * xNoise, cshake.y * yNoise, cshake.z * zNoise);
         }
 
         private void RotateRig()
