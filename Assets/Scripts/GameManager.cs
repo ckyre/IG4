@@ -14,12 +14,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameManagerState state;
     [Header("Game settings")]
-    [SerializeField] private double timerDuration = 30.0f;
+    [SerializeField] private double timerDuration = 300.0f;
     public MapSettings mapSettings;
     [Header("Player current stats")]
     [SerializeField] private int collectables = 0;
-    [Space, SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip endTimerAudioClip;
     public float timerForEndTimer = 10.0f;
 
     // In-game variables.
@@ -66,7 +64,7 @@ public class GameManager : MonoBehaviour
             if (endTimerTrigger != true && timer <= timerForEndTimer)
             {
                 endTimerTrigger = true;
-                audioSource.PlayOneShot(endTimerAudioClip);
+                FlightAudioManager.instance.EndCountDown();
             }
 
             if (endTimerAnimTrigger != true && timer <= timerForEndTimer+1.0f)

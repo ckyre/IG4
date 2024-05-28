@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.64948714, g: 0.77311146, b: 0.834781, a: 1}
+  m_IndirectSpecularColor: {r: 0.6494871, g: 0.7731115, b: 0.834781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13752,7 +13752,7 @@ PrefabInstance:
     - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: timerDuration
-      value: 300
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 155873459317621260, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
@@ -13859,6 +13859,11 @@ PrefabInstance:
       propertyPath: startCountDown
       value: 
       objectReference: {fileID: 8300000, guid: e3b587f8fa6d3de41af0fe43e8e0b538, type: 3}
+    - target: {fileID: 5545627492399041190, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: endTimerAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6235516b7c895c54989e5c7b5de5cb86, type: 3}
     - target: {fileID: 5596772271153444857, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
       propertyPath: m_Radius

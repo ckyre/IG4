@@ -16,6 +16,7 @@ public class FlightAudioManager : MonoBehaviour
     private AudioClip collectClip;
     [SerializeField]
     private AudioClip startCountDown;
+    [SerializeField] private AudioClip endTimerAudioClip;
 
     [SerializeField]
     private AudioSource windSource;
@@ -24,7 +25,9 @@ public class FlightAudioManager : MonoBehaviour
     
     [SerializeField]
     private AudioSource engineSource;
-    
+
+    private bool endTimerTrigger = false;
+
     private void Awake()
     {
         instance = this;
@@ -50,6 +53,12 @@ public class FlightAudioManager : MonoBehaviour
     public void StartCountDown()
     {
         gameplayEventsSource.PlayOneShot(startCountDown);
+    }
+
+    public void EndCountDown()
+    {
+        gameplayEventsSource.PlayOneShot(endTimerAudioClip);
+        Debug.Log("END TIMER NOW");
     }
 
     public void ActiveEngineSound(bool stop)
