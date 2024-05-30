@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/3rd Party/MouseFlight/Demo/Scripts/Plane.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3rd Party/MouseFlight/Demo/Scripts/Plane.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3rd Party/MouseFlight/Scripts/MouseFlightController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3rd Party/MouseFlight/Scripts/MouseFlightController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/FlightHUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/FlightHUD.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +121,8 @@
       <workItem from="1716828755842" duration="1759000" />
       <workItem from="1716845767514" duration="1294000" />
       <workItem from="1716877573223" duration="10357000" />
+      <workItem from="1716980948600" duration="164000" />
+      <workItem from="1717098949111" duration="567000" />
     </task>
     <servers />
   </component>
