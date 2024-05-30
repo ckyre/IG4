@@ -25,7 +25,8 @@ namespace MFlight.Demo
         [Tooltip("Force to push plane forwards with")] public float thrust = 100f;
         [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(90f, 25f, 45f);
         [Tooltip("Multiplier for all forces")] public float forceMult = 1000f;
-
+        [SerializeField] private float seaLevel = 96.0f;
+        
         [Header("Autopilot")]
         [Tooltip("Sensitivity for autopilot flight.")] public float sensitivity = 5f;
         [Tooltip("Angle at which airplane banks fully into target.")] public float aggressiveTurnAngle = 10f;
@@ -136,6 +137,14 @@ namespace MFlight.Demo
             yaw = autoYaw;
             pitch = (pitchOverride) ? keyboardPitch : autoPitch;
             roll = (rollOverride) ? keyboardRoll : autoRoll;
+            
+            // Update flight info on HUD.
+            if (FlightHUD.instance != null)
+            {
+                FlightHUD.instance.UpdateAltitude(transform.position.y - seaLevel);
+                FlightHUD.instance.UpdateSpeed(rigid.velocity.magnitude);
+            }
+
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)
@@ -236,5 +245,6 @@ namespace MFlight.Demo
         {
             return Time.time - stopTime;
         }
+        
     }
 }

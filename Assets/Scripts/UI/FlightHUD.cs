@@ -10,7 +10,7 @@ public class FlightHUD : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private TMP_Text collectablesText;
-    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text timerText, altitudeText, speedText;
     [SerializeField] private Animator hudAnimator;
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private MouseFlightController mouseController;
@@ -39,6 +39,16 @@ public class FlightHUD : MonoBehaviour
     {
         TimeSpan timer = TimeSpan.FromSeconds(seconds);
         timerText.text = timer.ToString(@"mm\:ss");
+    }
+
+    public void UpdateAltitude(float altitude)
+    {
+        altitudeText.text = altitude.ToString("0") + " m";
+    }
+    
+    public void UpdateSpeed(float speed)
+    {
+        speedText.text = speed.ToString("0") + " km/h";
     }
 
     public void FadeOut()
