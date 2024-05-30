@@ -61,7 +61,6 @@ public class PlaneAnimation : MonoBehaviour {
         {
             propeller.Rotate (Vector3.forward * (propSpeed / 4) * Time.deltaTime);
         }
-
         else
         {
             propeller.Rotate (Vector3.forward * propSpeed * Time.deltaTime);

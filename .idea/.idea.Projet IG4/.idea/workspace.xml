@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75747ef2-6508-4c8c-aa1c-e0c009513370" name="Changes" comment="" />
+    <list default="true" id="75747ef2-6508-4c8c-aa1c-e0c009513370" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Projet IG4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/UI/Fade Image.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/UI/Fade Image.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/UI/FlightStart.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/UI/FlightStart.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Gameplay Objects.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Flight Demo.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/PlaneAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/PlaneAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/FlightHUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/FlightHUD.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenuManager.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,6 +129,7 @@
       <workItem from="1716877573223" duration="10357000" />
       <workItem from="1716980948600" duration="164000" />
       <workItem from="1717098949111" duration="913000" />
+      <workItem from="1717107432533" duration="2554000" />
     </task>
     <servers />
   </component>

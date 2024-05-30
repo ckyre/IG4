@@ -9,11 +9,14 @@ public class FlightHUD : MonoBehaviour
     public static FlightHUD instance;
     
     [Header("References")]
+    [SerializeField] private CanvasGroup mainSection, pauseSection;
     [SerializeField] private TMP_Text collectablesText;
     [SerializeField] private TMP_Text timerText, altitudeText, speedText;
     [SerializeField] private Animator hudAnimator;
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private MouseFlightController mouseController;
+
+    private bool paused = false;
     
     private void Awake()
     {
@@ -27,6 +30,29 @@ public class FlightHUD : MonoBehaviour
         {
             mouseController.freezeControls = true;
             StartCoroutine(StartFlightAnimation());
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            paused = !paused;
+
+            if (paused == true)
+            {
+                Time.timeScale = 0.0f;
+                mainSection.alpha = 0.0f;
+                pauseSection.alpha = 1.0f;
+                pauseSection.interactable = true;
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+                mainSection.alpha = 1.0f;
+                pauseSection.alpha = 0.0f;
+                pauseSection.interactable = false;
+            }
         }
     }
 
@@ -74,5 +100,19 @@ public class FlightHUD : MonoBehaviour
         {
             mouseController.freezeControls = false;
         }
+    }
+
+    public void OnResumeButton()
+    {
+        Time.timeScale = 1.0f;
+        mainSection.alpha = 1.0f;
+        pauseSection.alpha = 0.0f;
+        pauseSection.interactable = false;
+        paused = false;
+    }
+
+    public void OnQuitButton()
+    {
+        GameManager.instance.QuitFlightScene();
     }
 }

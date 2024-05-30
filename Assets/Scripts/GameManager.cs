@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         FlightHUD.instance.FadeOut();
         yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene(0);
+        QuitFlightScene();
     }
     
     private IEnumerator PlayerWinAnimation(float delay)
@@ -160,6 +160,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         FlightHUD.instance.FadeOut();
         yield return new WaitForSeconds(2.0f);
+        QuitFlightScene();
+    }
+
+    public void QuitFlightScene()
+    {
+        if (state == GameManagerState.Playing)
+            state = GameManagerState.MainMenu;
+        
         SceneManager.LoadScene(0);
     }
     
