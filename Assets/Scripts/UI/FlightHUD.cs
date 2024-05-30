@@ -43,7 +43,7 @@ public class FlightHUD : MonoBehaviour
 
     public void UpdateAltitude(float altitude)
     {
-        altitudeText.text = altitude.ToString("0") + " m";
+        altitudeText.text = "<mspace=0.5em>" + altitude.ToString("0") + "</mspace>";
     }
     
     public void UpdateSpeed(float speed)

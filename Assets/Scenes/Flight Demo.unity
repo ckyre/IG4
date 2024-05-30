@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.64948714, g: 0.77311146, b: 0.834781, a: 1}
+  m_IndirectSpecularColor: {r: 0.6494871, g: 0.7731115, b: 0.834781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2989,8 +2989,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00008297, y: -3.1897}
-  m_SizeDelta: {x: 322.2455, y: 52.8103}
+  m_AnchoredPosition: {x: -74.2, y: -42}
+  m_SizeDelta: {x: 389.202, y: 153.245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397219864
 MonoBehaviour:
@@ -3012,7 +3012,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100 m
+  m_text: <mspace=0.5em>8216</mspace>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 13e42d852e810854b8cecdb8afe4e649, type: 2}
   m_sharedMaterial: {fileID: -7453182863379391671, guid: 13e42d852e810854b8cecdb8afe4e649,
@@ -3022,8 +3022,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 2785017856
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0.6509804}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3040,17 +3040,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.2
-  m_fontSizeBase: 45.2
+  m_fontSize: 193.74
+  m_fontSizeBase: 193.74
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -1.31
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3061,7 +3061,7 @@ MonoBehaviour:
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
+  m_enableKerning: 0
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -13276,8 +13276,8 @@ RectTransform:
   m_GameObject: {fileID: 1719870426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 397219863}
   - {fileID: 607890692}
@@ -13285,8 +13285,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -188.21259, y: 72.094055}
-  m_SizeDelta: {x: 376.4253, y: 144.1881}
+  m_AnchoredPosition: {x: -193, y: 127}
+  m_SizeDelta: {x: 1024, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1719870428
 MonoBehaviour:
@@ -13308,7 +13308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 104611e8ff4c4c14e9493bf1bef55c76, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14250,6 +14250,11 @@ PrefabInstance:
         type: 3}
       propertyPath: minPitch
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767928323893703554, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
+      propertyPath: seaLevel
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 5767928323893703554, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
