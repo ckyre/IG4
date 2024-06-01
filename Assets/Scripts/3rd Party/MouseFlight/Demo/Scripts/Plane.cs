@@ -125,7 +125,7 @@ namespace MFlight.Demo
 
             // Linear interpolation for pitch
             engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, targetPitch, Time.deltaTime / fadeDuration);
-            
+
             // Calculate the autopilot stick inputs.
             float autoYaw = 0f;
             float autoPitch = 0f;

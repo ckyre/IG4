@@ -87,7 +87,7 @@ public class PlaneAnimation : MonoBehaviour {
 
         // Splash
 
-        // Calculate the new flow rate using a sine wave function
+        // Calculate the new flow rate
         float interpolationSpeed = 5.0f;
         
 

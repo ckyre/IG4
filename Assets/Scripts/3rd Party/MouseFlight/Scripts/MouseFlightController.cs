@@ -13,6 +13,8 @@ namespace MFlight
     /// Combination of camera rig and controller for aircraft. Requires a properly set
     /// up rig. I highly recommend either using or referencing the included prefab.
     /// </summary>
+    ///
+
     public class MouseFlightController : MonoBehaviour
     {
         [Header("Components")]
@@ -46,10 +48,17 @@ namespace MFlight
         [SerializeField] private float freeFallShakeFadeDuration;
         
         [SerializeField] private float maxHeightShake;
-        
-        [SerializeField] private Vector3 cameraShake;
+        [SerializeField] private float xShakeFactor;
+        [SerializeField] private float yShakeFactor;
+        [SerializeField] private float zShakeFactor;
 
-        
+        [SerializeField] private float xDiveShakeFactor;
+        [SerializeField] private float yDiveShakeFactor;
+        [SerializeField] private float zDiveShakeFactor;
+
+        float currentFrequency;
+
+
         [Space]
         [SerializeField] [Tooltip("How far the boresight and mouse flight are from the aircraft")]
         private bool showDebugInfo = false;
@@ -57,8 +66,10 @@ namespace MFlight
         private Vector3 frozenDirection = Vector3.forward;
         private bool isMouseAimFrozen = false;
 
-        private Vector3 cshake;
-        
+        private float shakeFactorTarget = 0.0f;
+        float shakeFactorCurrent = 0.0f;
+        private bool stop = false;
+
         private Plane planeController;
         
         /// <summary>
@@ -146,6 +157,27 @@ namespace MFlight
             {
                 RotateRig();
             }
+
+            // test
+            if (Input.GetKey(KeyCode.Space))
+            {
+                if (!stop)
+                {
+                    stop = true;
+                    shakeFactorTarget = 1.0f;
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                if (stop)
+                {
+                    stop = false;
+                    shakeFactorTarget = 0.0f;
+                }
+            }
+
+            shakeFactorCurrent = Mathf.Lerp(shakeFactorCurrent, shakeFactorTarget, Time.deltaTime / freeFallShakeFadeDuration);
         }
 
         private void FixedUpdate()
@@ -166,25 +198,22 @@ namespace MFlight
             cam.position += cam.right * offset.x;
             
             // Add noise to camera position.
-            float f = 0.0f;
-            if (planeController.IsStopped() == true)
-            {
-                float duration = planeController.StopDuration();
-                float t = Mathf.Clamp01(duration / freeFallShakeFadeDuration);
-                cshake = cameraShake * t;
-                f = freeFallShakeFrequency;
-            }
-            else
-            {
-                float t = Mathf.Clamp01(aircraft.position.y / maxHeightShake);
-                cshake = cameraShake;
-                f = shakeFrequency * t;
-            }
-            
-            float xNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.x) * f) * 2 - 1;
-            float yNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.y) * f) * 2 - 1;
-            float zNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.z) * f) * 2 - 1;
-            cam.position += new Vector3(cshake.x * xNoise, cshake.y * yNoise, cshake.z * zNoise);
+            float normalizedHeight = Mathf.Clamp01(aircraft.position.y / maxHeightShake);
+            float secondaryNormalizedHeight = Mathf.Clamp01(aircraft.position.y / 250);
+
+            float mainHeightShake = shakeFactorCurrent.Remap(0.0f, 1.0f, shakeFrequency * normalizedHeight, freeFallShakeFrequency*2.0f);
+
+            float divePower = shakeFactorCurrent.Remap(0.0f, 1.0f, shakeFrequency * normalizedHeight, freeFallShakeFrequency)*secondaryNormalizedHeight;
+            Debug.Log("divePower : " + divePower);
+
+            float xNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.x) * mainHeightShake) * 2 - 1;
+            float yNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.y) * mainHeightShake) * 2 - 1;
+            float zNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.z) * mainHeightShake) * 2 - 1;
+
+            float xGlobalShakeFactor = shakeFactorCurrent.Remap(0.0f, 1.0f, xShakeFactor, xDiveShakeFactor);
+            float yGlobalShakeFactor = shakeFactorCurrent.Remap(0.0f, 1.0f, yShakeFactor, yDiveShakeFactor);
+            float zGlobalShakeFactor = shakeFactorCurrent.Remap(0.0f, 1.0f, zShakeFactor, zDiveShakeFactor);
+            cam.position += new Vector3(xNoise * divePower* xGlobalShakeFactor, yNoise * divePower* yGlobalShakeFactor, zNoise * divePower* zGlobalShakeFactor);
         }
 
         private void RotateRig()
@@ -288,5 +317,25 @@ namespace MFlight
                 Gizmos.color = oldColor;
             }
         }
+
     }
+
+    public static class ExtensionMethods
+    {
+        public static float Remap(this float from, float fromMin, float fromMax, float toMin, float toMax)
+        {
+            var fromAbs = from - fromMin;
+            var fromMaxAbs = fromMax - fromMin;
+
+            var normal = fromAbs / fromMaxAbs;
+
+            var toMaxAbs = toMax - toMin;
+            var toAbs = toMaxAbs * normal;
+
+            var to = toAbs + toMin;
+
+            return to;
+        }
+    }
+
 }
