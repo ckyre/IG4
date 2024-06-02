@@ -33,7 +33,7 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            OpenSection(menuSection);
+            OpenSection(startSection);
         }
     }
 

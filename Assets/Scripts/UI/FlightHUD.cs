@@ -113,6 +113,7 @@ public class FlightHUD : MonoBehaviour
 
     public void OnQuitButton()
     {
+        Time.timeScale = 1.0f;
         GameManager.instance.QuitFlightScene();
     }
 }
