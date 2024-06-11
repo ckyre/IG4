@@ -3,6 +3,7 @@ using System.Collections;
 using MFlight;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FlightHUD : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class FlightHUD : MonoBehaviour
     [SerializeField] private Animator hudAnimator;
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private MouseFlightController mouseController;
+    [SerializeField] private AudioMixer mainMixer;
+
+    private float volumeForce = 1.0f;
 
     private bool paused = false;
     
@@ -25,6 +29,7 @@ public class FlightHUD : MonoBehaviour
 
     private void Start()
     {
+        mainMixer.GetFloat("volume", out volumeForce);
         FlightAudioManager.instance.StartCountDown();
         if (mouseController != null)
         {
@@ -45,6 +50,7 @@ public class FlightHUD : MonoBehaviour
                 mainSection.alpha = 0.0f;
                 pauseSection.alpha = 1.0f;
                 pauseSection.interactable = true;
+                mainMixer.SetFloat("volume", -80.0f);
             }
             else
             {
@@ -52,6 +58,7 @@ public class FlightHUD : MonoBehaviour
                 mainSection.alpha = 1.0f;
                 pauseSection.alpha = 0.0f;
                 pauseSection.interactable = false;
+                mainMixer.SetFloat("volume", 0.0f);
             }
         }
     }
@@ -104,6 +111,7 @@ public class FlightHUD : MonoBehaviour
 
     public void OnResumeButton()
     {
+        mainMixer.SetFloat("volume", 0.0f);
         Time.timeScale = 1.0f;
         mainSection.alpha = 1.0f;
         pauseSection.alpha = 0.0f;

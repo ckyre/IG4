@@ -12345,6 +12345,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300784166855808708, guid: 550c61a855cc7fa4488ef395f9984beb,
         type: 3}
+      propertyPath: mainMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 899a701800cd9d1498fea5f58aa08da6,
+        type: 2}
+    - target: {fileID: 4300784166855808708, guid: 550c61a855cc7fa4488ef395f9984beb,
+        type: 3}
       propertyPath: mainSection
       value: 
       objectReference: {fileID: 1089070611}

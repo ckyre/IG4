@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         GameManager.GameManagerState GMState = GameManager.instance.CurrentState();
 
         if (GMState == GameManager.GameManagerState.Win)

@@ -204,7 +204,6 @@ namespace MFlight
             float mainHeightShake = shakeFactorCurrent.Remap(0.0f, 1.0f, shakeFrequency * normalizedHeight, freeFallShakeFrequency*2.0f);
 
             float divePower = shakeFactorCurrent.Remap(0.0f, 1.0f, shakeFrequency * normalizedHeight, freeFallShakeFrequency)*secondaryNormalizedHeight;
-            Debug.Log("divePower : " + divePower);
 
             float xNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.x) * mainHeightShake) * 2 - 1;
             float yNoise = Mathf.PerlinNoise1D(Mathf.Abs(aircraft.position.y) * mainHeightShake) * 2 - 1;
